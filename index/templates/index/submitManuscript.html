@@ -1,0 +1,204 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>GAJRC | Submit Manuscript</title>
+
+	<meta name="viewport" content= "width=device-width, initial-scale=1.0"> 
+
+	<link rel="stylesheet" href="{% static 'css/custom.css' %}">
+	<link rel="stylesheet" href="{% static 'css/main.css' %}">
+	<link rel="stylesheet" href="{% static 'css/bulmahelper.min.css' %}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="{% static 'js/main.js' %}"></script>
+	<script src="{% static 'js/dropzone.js' %}"></script>
+</head>
+<body>
+	<div class="index-background-container" >
+		<div class="header">
+			<section class="is-fullhd">
+				<nav class="navbar has-padding-left-20 has-padding-right-20" role="navigation" aria-label="main navigation">
+					<div class="navbar-brand">
+						<a class="navbar-item" href="{% url 'index' %}">
+							<figure class="image" style="height:75;width:100px">
+								<img src="{% static 'media/mainLogo.png' %}">
+							</figure>
+						</a>
+
+						<a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+							<span aria-hidden="true"></span>
+							<span aria-hidden="true"></span>
+							<span aria-hidden="true"></span>
+						</a>
+					</div>
+
+					<div id="navbarBasicExample" class="navbar-menu">
+						<div class="navbar-start">
+
+						</div>
+
+						<div class="navbar-end">
+							<a class="navbar-item" href="{% url 'index' %}">
+								<i class="fa fa-home fa-lg"></i>
+							</a>
+
+							<a class="navbar-item" href="{% url 'about_us' %}">
+								About Us
+							</a>
+							<a class="navbar-item" href="{% url 'journals' %}">
+								Journals
+							</a>
+
+							<!--<div class="navbar-item has-dropdown is-hoverable">
+								<a class="navbar-link">
+									Guidelines
+								</a>
+
+								<div class="navbar-dropdown">
+									<a class="navbar-item">
+										Editor Guidelines
+									</a>
+									<a class="navbar-item">
+										Reviewer Guidelines
+									</a>
+									<a class="navbar-item">
+										Manuscript Guidelines
+									</a>
+								</div>
+							</div>-->
+
+							<div class="navbar-item has-dropdown is-hoverable">
+								<a class="navbar-link">
+									For Authors
+								</a>
+
+								<div class="navbar-dropdown">
+									<a class="navbar-item" href="{% url 'author_guidelines' %}">
+										Guidelines
+									</a>
+									<a class="navbar-item" href="{% url 'processing_fees' %}">
+										Processing Fee
+									</a>
+								</div>
+							</div>
+						<div class="navbar-item">
+							<div class="buttons">
+								<a class="button is-primary" href="{% url 'submitManuscript' %}">
+									<strong>Submit Manuscript</strong>
+								</a>
+							</div>
+						</div>	
+					</div>
+				</nav>
+			</section>
+			<section class="hero has-padding-20 has-margin-top-10">
+				<div class="hero-body">
+					<div class="container has-text-centered">
+						<h1 class="title is-size-1 is-size-2-mobile  has-text-primary">
+							Online Submission System
+						</h1>
+					</div>
+				</div>
+			</section>
+		</div>
+		<section class="container has-padding-40 is-block has-background-white" style="box-shadow: 2px 2px 10px #333;border-radius: 5px">
+			<p class="has-text-danger">Authors may also submit their manuscript by email to <strong>easpublisher@gmail.com</strong></p><br>
+			<p  class="is-size-4 is-size-5-mobile"> Personal Details</p><br>
+			<div class="columns is-variable">
+				<div class="column">
+					<div class="field is-fullwidth">
+						<div class="control is-fullwidth">
+							<div class="columns is-variable">
+								<div class="column is-2">
+									<div class="select is-fullwidth">
+										<select>
+											<option selected>Select title</option>
+											<option> Dr. </option>
+											<option> Prof </option>
+											<option> Mr. </option>
+											<option> Ms. </option>
+											<option> Mrs. </option>
+											<option> Miss </option>
+										</select>
+									</div>
+								</div>
+								<div class="column">
+									<div class="control">
+										<input class="input" type="text" placeholder="First Name">
+									</div>
+								</div>
+								<div class="column">
+									<div class="control">
+										<input class="input" type="text" placeholder="Last Name">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="control">
+						<input class="input" type="text" placeholder="University">
+					</div><br>
+					<div class="control">
+						<textarea class="textarea" type="textarea" placeholder="Address"></textarea>
+					</div><br>
+					<div class="columns is-variable">
+						<div class="column">
+							<div class="control">
+								<input class="input" type="email" placeholder="Email">
+							</div>
+						</div>
+						<div class="column">
+							<div class="control">
+								<input class="input" type="text" placeholder="Phone Number">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div><br>
+
+			<p class="is-size-4 is-size-5-mobile"> Document Details</p><br>
+			<div class="columns is-variable">
+				<div class="column">
+					<div class="field is-fullwidth">
+						<div class="control is-fullwidth">
+							<input class="input" type="text" placeholder="Journal Name">
+						</div><br>
+						<div class="control">
+							<div class="select is-fullwidth">
+								<select>
+									<option selected>Select article type</option>
+									<option> Dr. </option>
+									<option> Prof </option>
+									<option> Mr. </option>
+									<option> Ms. </option>
+									<option> Mrs. </option>
+									<option> Miss </option>
+								</select>
+							</div>
+						</div><br>
+						<div class="control is-fullwidth">
+							<input class="input" type="text" placeholder="Manuscript Title">
+						</div><br>
+						<div class="control">
+							<textarea class="textarea" type="textarea" placeholder="Insert Abstract"></textarea>
+						</div><br>
+						<div id="dropZone" class="has-padding-30 has-text-centered" style="background:#e7e7e7;">
+							<form action="/file-upload" class="dropzone has-padding-50" style= "background:white; border:2px dashed blue">
+								<div class="fallback">
+									<input name="file" type="file" multiple />
+								</div>
+							</form>
+
+						</div><br>
+						<div class="controll is-pulled-right">
+							<div class="button is-outlined is-primary">Submit Manuscript</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</body>
+</html>

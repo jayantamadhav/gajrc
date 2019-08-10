@@ -1,0 +1,338 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>GAJRC | Home</title>
+
+	<meta name="viewport" content= "width=device-width, initial-scale=1.0"> 
+
+	<link rel="stylesheet" href="{% static 'css/custom.css' %}">
+	<link rel="stylesheet" href="{% static 'css/main.css' %}">
+	<link rel="stylesheet" href="{% static 'css/bulmahelper.min.css' %}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<link rel="stylesheet" type="text/css" href="{% static 'css/slick.css' %}"/>
+	<!--Slick slider-->
+
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+	<script src="{% static 'js/main.js' %}"></script>
+	<script src="{% static 'js/dropzone.js' %}"></script>
+</head>
+<body>
+	<div class="index-background-container">
+
+		<div class="header">
+			<section class="is-fullhd">
+				<nav class="navbar has-padding-left-20 has-padding-right-20" role="navigation" aria-label="main navigation">
+					<div class="navbar-brand">
+						<a class="navbar-item" href="{% url 'index' %}">
+							<figure class="image" style="height:75;width:100px">
+								<img src="{% static 'media/mainLogo.png' %}">
+							</figure>
+						</a>
+
+						<a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+							<span aria-hidden="true"></span>
+							<span aria-hidden="true"></span>
+							<span aria-hidden="true"></span>
+						</a>
+					</div>
+
+					<div id="navbarBasicExample" class="navbar-menu">
+						<div class="navbar-start">
+
+						</div>
+
+						<div class="navbar-end">
+							<a class="navbar-item is-active" href="{% url 'index' %}">
+								<i class="fa fa-home fa-lg"></i>
+							</a>
+
+							<a class="navbar-item" href="{% url 'about_us' %}">
+								About Us
+							</a>
+							<a class="navbar-item" href="{% url 'journals' %}">
+								Journals
+							</a>
+
+							<!--<div class="navbar-item has-dropdown is-hoverable">
+								<a class="navbar-link">
+									Guidelines
+								</a>
+
+								<div class="navbar-dropdown">
+									<a class="navbar-item">
+										Editor Guidelines
+									</a>
+									<a class="navbar-item">
+										Reviewer Guidelines
+									</a>
+									<a class="navbar-item">
+										Manuscript Guidelines
+									</a>
+								</div>
+							</div>
+						-->
+
+						<div class="navbar-item has-dropdown is-hoverable">
+							<a class="navbar-link">
+								For Authors
+							</a>
+
+							<div class="navbar-dropdown">
+								<a class="navbar-item" href="{% url 'author_guidelines' %}">
+									Guidelines
+								</a>
+								<a class="navbar-item" href="{% url 'processing_fees' %}">
+									Processing Fee
+								</a>
+							</div>
+						</div>
+						<div class="navbar-item">
+							<div class="buttons">
+								<a class="button is-primary" href="{% url 'submitManuscript' %}">
+									<strong>Submit Manuscript</strong>
+								</a>
+							</div>
+						</div>	
+					</div>
+				</div>
+			</nav>
+		</section>
+	</div>
+
+	<div class="container has-padding-50"> 
+		<figure class="image " style="width:80%;height:10%;margin:0 auto;">
+			<img src="{% static 'media/mainLogo.png' %}">
+		</figure>
+	</div>
+	<section class="hero has-padding-10">
+		<div class="hero-body">
+			<div class="container has-text-centered">
+				<h1 class="title">
+					Discover the Highly Featured Articles with us
+				</h1>
+				<h2 class="subtitle">
+					Scholarly open access publisher
+				</h2>
+				<div class="has-text-centered has-margin-top-20">
+					<a href="{% url 'journals' %}"><div class="button is-outlined is-primary has-margin-5"> Browse Journals </div></a>
+					<a href="{% url 'submitManuscript' %}"><div class="button is-primary has-margin-5">Submit Manuscript</div></a>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--Company Info-->
+	<section class="section is-block has-background-primary has-text-white" style="box-shadow: 2px 2px 10px #333;">
+		<div class="has-text-centered">
+			<div><p class="is-size-3 is-size-4-mobile"> Welcome to GAJRC</p>
+				<p class="is-size-6-mobile has-margin-top-50">
+					GAJRC (Global Acedemic Journals and Research Consortium) is an international scholar’s publisher for open access scientific journals in both print and online publishing from Kenya. The aim of the organization is to providing the best quality research journals publication and quick response to our researcher and providing the best platform for the Research Explore &amp; ensure the recognition of scientists and researchers as they deserve the opportunity to play a significant role in the global scientific community. We expect to publish lots of research &amp;w creative paper so that mankind can get a better knowledge about scientific Publication.GAJRC Publisher team is dedicated to continuously improving service provision and to maintaining high quality standards
+				</p>
+			</div>
+		</div>
+	</section>
+
+
+	<section class="section is-size-6-mobile has-margin-top-20" >
+		<div class="columns is-variable">
+			<!--Recent articles-->
+			<div class="column is-9" style="background:rgba(255, 255, 255, 0.6);box-shadow: 5px 5px 20px #333;border-radius: 5px">
+				<p class="is-size-3 is-size-4-mobile has-text-grey">Featured Articles</p>
+				<!--articles-->
+				{% if featured_articles%}
+				{% for article in featured_articles%}
+				<div class="box">
+					<article class="media">
+						<div class="media-content">
+							<div class="level">
+								<div class="level-left">
+									<p><button class="button is-danger">Research article</button></p>
+								</div>
+								<div class="level-right">
+									<p>{{ article.publish_date }}</p>
+								</div>
+							</div>
+							<div class="content">
+								<a href="{{article.article.url}}" class="is-primary">{{ article.article_name}}</a>
+								<p>
+									<i class="fa fa-user"></i>{{ article.author }}
+								</p>
+								{{article.article.url}}
+								<button class="button is-outlined is-primary is-pulled-right"><a href="{{article.article.url}}" class="is-primary">Download</a></button>
+							</div>
+
+						</div>
+					</article>
+				</div>
+				{% endfor %}
+				{% else %}
+					<p class="has-text-danger">No Articles Added yet</p>
+				{% endif%}
+			</div>
+
+			<!--Right column-->
+			<div class="column is-size-7">
+
+				<!--top editors-->
+				<div class="container">
+					<div class="card has-padding-10" style="box-shadow: 2px 2px 10px #333;border-radius: 5px;">
+						<div class="card-header">
+							<p class="is-size-5"> Top Editors</p>
+						</div>
+						<div class="slider" style="overflow:hidden !important;">
+							{% if top_editors%}
+							{% for editor in top_editors%}
+							<div class="box">
+								<article class="media">
+									<div class="media-left">
+										<figure class="image is-64x64">
+											<img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
+										</figure>
+									</div>
+									<div class="media-content">
+										<div class="content">
+											<p>
+												<strong>{{editor.editor_name}}</strong>
+												<br>
+												{{editor.designation}}<br>
+												{{editor.editor_info}}
+											</p>
+										</div>
+									</div>
+								</article>
+							</div>
+							{% endfor %}
+							{% else %}
+								<p class="has-text-danger">No editors Added Yet..</p>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+
+				<!--Article tracking-->
+				<div class="container has-margin-top-20">
+					<div class="card has-padding-10" style="box-shadow: 2px 2px 10px #333;border-radius: 5px">
+						<div class="card-header">
+							<p class="is-size-5"> Track Your article </p>
+						</div>
+						<div class="card-content">
+							<div class="field">
+								<div class="control">
+									<input class="input has-margin-5" type="text" placeholder="Enter Manuscript ID">
+									<input class="input has-margin-5" type="text" placeholder="Enter Email">
+									<button class="button is-outlined is-primary has-margin-5" >Submit</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!--Footer-->
+	<section class="section is-size-6-mobile has-background-dark has-text-light has-margin-top-50">
+
+		<div class="has-text-centered"><p class="is-size-5">Article formats</p></div>
+		<div class="columns is-variable has-margin-top-10">
+			<div class="column is-6">
+				<div class="box has-background-dark">
+					<article class="media">
+						<div class="media-left">
+							<i class="fa fa-file-pdf-o fa-5x"></i>
+						</div>
+						<div class="media-content">
+							<div class="content">
+								<p>
+									PDF (Portable Document Format) is a file format that has captured all the elements of a printed document as an electronic image that you can view, navigate <a href="#" class="has-text-white">read more...</a>
+								</p>
+							</div>
+						</div>
+					</article>
+				</div>
+			</div>
+			<div class="column is-6">
+				<div class="box has-background-dark">
+					<article class="media">
+						<div class="media-left">
+							<i class="fa fa-file-text fa-5x"></i>
+						</div>
+						<div class="media-content">
+							<div class="content">
+								<p>
+									A full-text database is a compilation of documents or other information in the form of a database in which the complete text of each referenced document is <a href="#" class="has-text-white">read more...</a>
+								</p>
+							</div>
+						</div>
+					</article>
+				</div>
+			</div>
+		</div>
+		<div class="columns has-text-centered has-margin-top-20">
+			<div class="column " style="background-color: #3b5998;">
+				<a href="https://www.facebook.com/angela.roy.77312" target="_blank" class="fb"><i class="fa fa-facebook has-text-white"></i></a>
+			</div>
+			<div class="column" style="background-color: #00ACEE;">
+				<a href="https://twitter.com/lupine_online" class="tw" target="_blank"><i class="fa fa-twitter has-text-white"></i></a>
+			</div>
+			<div class="column" style="background-color: #0077b5;">
+				<a href="#" class="in" ><i class="fa fa-linkedin has-text-white"></i></a>
+			</div>
+			<div class="column" style="background-color: #db4a39;">
+				<a href="https://plus.google.com/u/0/+LupinePublishers" class="gp" target="_blank"><i class="fa fa-google-plus has-text-white"></i></a>
+			</div>
+			<div class="column"  style="background-color:#34526f">
+				<a href="https://lupinepublishers.tumblr.com/" class="be" target="_blank"><i class="fa fa-tumblr has-text-white"></i></a>
+			</div>
+		</div>
+		<div class="columns is-variable has-margin-top-20">
+			<div class="column">
+				<p class="is-size-5">Contact us</p><br>
+				<p class="is-size-7">
+					GAJRC Publishers<br>
+					Hojai, Assam<br>
+					pin : 782435<br>
+					INDIA<br>
+				</p>
+			</div>
+			<div class="column">
+				<p class="is-size-5">Useful Links</p><br>
+				<p class="is-size-7">
+					<a href="{% url 'index' %}" class="has-text-white">Home</a><br>
+					<a href="#" class="has-text-white">Aim and Scope</a><br>
+					<a href="{% url 'author_guidelines' %}" class="has-text-white">Author Guidelines</a><br>
+					<a href="#" class="has-text-white">Subject Area</a><br>
+					<a href="#" class="has-text-white">Contact Us</a><br>
+				</p>
+			</div>
+			<div class="column">
+				<p class="is-size-5">About Us</p><br>
+				<p class="is-size-7">
+					GAJRC(Global Academic Journals and Research Consortium) is an international scholar’s publisher for open access scientific journals in both print and online publishing from Kenya..<a href="#" class="has-text-primary"> Read More</a>
+				</p>
+			</div>
+			<div class="column">
+				<a id="comment-button"><p class="is-size-5 has-text-white">Leave a comment <i class="fa fa-chevron-down fa-xs"> </i></p></a>
+				<div id="comment-container" style="display: none">
+					<div class="field">
+						<div class="control ">
+							<input class="input is-small has-margin-5" type="text" placeholder="Enter Name">
+							<input class="input is-small has-margin-5" type="email" placeholder="Enter Email">
+							<textarea class="textarea is-small has-margin-5" type="textarea" placeholder="Comment Here.."></textarea>					
+							<button class="button is-outlined is-primary has-margin-5" >Submit</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container has-text-centered">
+			<p> &copy;GAJRC 2019, All Rights Reserved</p>
+			<p class="has-text-grey is-size-6">developed by JM</p>
+		</div>
+	</section>
+</div>
+</body>
+</html>

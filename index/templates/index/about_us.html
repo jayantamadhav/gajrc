@@ -1,0 +1,204 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>GAJRC | About Us</title>
+
+	<meta name="viewport" content= "width=device-width, initial-scale=1.0"> 
+
+	<link rel="stylesheet" href="{% static 'css/custom.css' %}">
+	<link rel="stylesheet" href="{% static 'css/main.css' %}">
+	<link rel="stylesheet" href="{% static 'css/bulmahelper.min.css' %}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="{% static 'js/main.js' %}"></script>
+	<script src="{% static 'js/dropzone.js' %}"></script>
+</head>
+<body>
+	<div class="index-background-container" >
+		<div class="header">
+			<section class="is-fullhd">
+				<nav class="navbar has-padding-left-20 has-padding-right-20" role="navigation" aria-label="main navigation">
+					<div class="navbar-brand">
+						<a class="navbar-item" href="{% url 'index' %}">
+							<figure class="image" style="height:75;width:100px">
+								<img src="{% static 'media/mainLogo.png' %}">
+							</figure>
+						</a>
+
+						<a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+							<span aria-hidden="true"></span>
+							<span aria-hidden="true"></span>
+							<span aria-hidden="true"></span>
+						</a>
+					</div>
+
+					<div id="navbarBasicExample" class="navbar-menu">
+						<div class="navbar-start">
+
+						</div>
+
+						<div class="navbar-end">
+							<a class="navbar-item" href="{% url 'index' %}">
+								<i class="fa fa-home fa-lg"></i>
+							</a>
+
+							<a class="navbar-item is-active" href="{% url 'about_us' %}">
+								About Us
+							</a>
+							<a class="navbar-item" href="{% url 'journals' %}">
+								Journals
+							</a>
+							<div class="navbar-item has-dropdown is-hoverable">
+								<a class="navbar-link">
+									For Authors
+								</a>
+
+								<div class="navbar-dropdown">
+									<a class="navbar-item" href="{% url 'author_guidelines' %}">
+										Guidelines
+									</a>
+									<a class="navbar-item is-active" href="{% url 'processing_fees' %}">
+										Processing Fee
+									</a>
+								</div>
+							</div>
+							<div class="navbar-item">
+								<div class="buttons">
+									<a class="button is-primary" href="{% url 'submitManuscript' %}">
+										<strong>Submit Manuscript</strong>
+									</a>
+								</div>
+							</div>	
+						</div>
+					</nav>
+				</section>
+				<section class="hero has-padding-20 has-margin-top-10">
+					<div class="hero-body">
+						<div class="container has-text-centered">
+							<h1 class="title is-size-1 is-size-2-mobile  has-text-primary">
+								About Us
+							</h1>
+						</div>
+					</div>
+				</section>
+			</div>
+			<section class="container has-padding-40 is-block has-background-white" style="box-shadow: 2px 2px 10px #333;border-radius: 5px">
+				<div class="container" >
+					<p class="is-size-2 is-size-4-mobile">About Us</p><br>
+					<div class="container is-size-5">
+						<p>GAJRC(Global Academic Journals and Research Consortium) is an international scholar’s publisher for open access scientific journals in both print and online publishing from India. Its aim is to provide scholars and researchers all over the world with rapid academic publishing and free access. GAJRC Publisher team is dedicated to continuously improving service provision and to maintaining high quality standards. We publish journals in all disciplines including arts, humanities, social sciences, medical sciences, business management studies, agriculture, biosciences, engineering, and linguistics among others, to meet the demands of scholars and researchers around the world.
+						</p>
+					</div>
+					<p class="has-text-left has-margin-top-70 is-size-6">
+						<span class="is-size-5">Our Office</span><br><br>
+						GAJRC Publisher<br>
+						Post Box : 782435, Hojai, Assam<br>
+						India<br>
+						easpublisher@gmail.com<br> 
+					</p>
+				</div>
+			</section>
+			
+			<section class="section is-size-6-mobile has-background-dark has-text-light has-margin-top-100">
+
+				<div class="has-text-centered"><p class="is-size-5">Article formats</p></div>
+				<div class="columns is-variable has-margin-top-10">
+					<div class="column is-6">
+						<div class="box has-background-dark">
+							<article class="media">
+								<div class="media-left">
+									<i class="fa fa-file-pdf-o fa-5x"></i>
+								</div>
+								<div class="media-content">
+									<div class="content">
+										<p>
+											PDF (Portable Document Format) is a file format that has captured all the elements of a printed document as an electronic image that you can view, navigate <a href="#" class="has-text-white">read more...</a>
+										</p>
+									</div>
+								</div>
+							</article>
+						</div>
+					</div>
+					<div class="column is-6">
+						<div class="box has-background-dark">
+							<article class="media">
+								<div class="media-left">
+									<i class="fa fa-file-text fa-5x"></i>
+								</div>
+								<div class="media-content">
+									<div class="content">
+										<p>
+											A full-text database is a compilation of documents or other information in the form of a database in which the complete text of each referenced document is <a href="#" class="has-text-white">read more...</a>
+										</p>
+									</div>
+								</div>
+							</article>
+						</div>
+					</div>
+				</div>
+				<div class="columns has-text-centered has-margin-top-20">
+					<div class="column " style="background-color: #3b5998;">
+						<a href="https://www.facebook.com/angela.roy.77312" target="_blank" class="fb"><i class="fa fa-facebook has-text-white"></i></a>
+					</div>
+					<div class="column" style="background-color: #00ACEE;">
+						<a href="https://twitter.com/lupine_online" class="tw" target="_blank"><i class="fa fa-twitter has-text-white"></i></a>
+					</div>
+					<div class="column" style="background-color: #0077b5;">
+						<a href="#" class="in" ><i class="fa fa-linkedin has-text-white"></i></a>
+					</div>
+					<div class="column" style="background-color: #db4a39;">
+						<a href="https://plus.google.com/u/0/+LupinePublishers" class="gp" target="_blank"><i class="fa fa-google-plus has-text-white"></i></a>
+					</div>
+					<div class="column"  style="background-color:#34526f">
+						<a href="https://lupinepublishers.tumblr.com/" class="be" target="_blank"><i class="fa fa-tumblr has-text-white"></i></a>
+					</div>
+				</div>
+				<div class="columns is-variable has-margin-top-20">
+					<div class="column">
+						<p class="is-size-5">Contact us</p><br>
+						<p class="is-size-7">
+							CompanyName Publishers<br>
+							57West 57th street, 3rd floor,<br>
+							New York, NY 10019, USA<br>
+							+1 914 407 6109<br>
+							info@lupinepublishers.com
+						</p>
+					</div>
+					<div class="column">
+						<p class="is-size-5">Useful Links</p><br>
+						<p class="is-size-7">
+							Home<br>
+							Aim and Scope<br>
+							Author Guidelines<br>
+							Subject Area<br>
+							Contact Us<br>
+						</p>
+					</div>
+					<div class="column">
+						<p class="is-size-5">About Us</p><br>
+						<p class="is-size-7">
+							The Lupine Publishers is an open access medical and clinical research publication that gives acclaimed scientific authors and research experts a global platform to share their work among like-minded peers and help accumulate scientific knowledge in a singular repository. <a href="#"> Read More</a>
+						</p>
+					</div>
+					<div class="column">
+						<a id="comment-button"><p class="is-size-5 has-text-white">Leave a comment <i class="fa fa-chevron-down fa-xs"> </i></p></a>
+						<div id="comment-container" style="display: none">
+							<div class="field">
+								<div class="control ">
+									<input class="input is-small has-margin-5" type="text" placeholder="Enter Name">
+									<input class="input is-small has-margin-5" type="email" placeholder="Enter Email">
+									<textarea class="textarea is-small has-margin-5" type="textarea" placeholder="Comment Here.."></textarea>					
+									<button class="button is-outlined is-primary has-margin-5" >Submit</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="container has-text-centered">
+					<p> &copy; CompanyName 2019, All Rights Reserved</p>
+				</div>
+			</section>
+		</div>
+	</body>
+	</html>
