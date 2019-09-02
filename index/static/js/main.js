@@ -10,19 +10,9 @@ $(document).ready(function() {
 		$("i", this).toggleClass("fa-chevron-down fa-chevron-up");
 		$("#comment-container").slideToggle("Slow");
 	});
-	$('.slider').slick({
-
-				dots: false,
-				prevArrow: false,
-				nextArrow: false,
-				vertical: true,
-				slidesToShow: 3,
-				slidesToScroll: 1,
-				autoplay: true,
-				infinite: true,
-				autoplaySpeed: 3000,
-				outerEdgeLimit: true
-			});
-
+	$('#leave-comment').on('click',function(){
+		$('comment-container').slideToggle('slow');
+		$('thankyou-container').html("<div class=\'is-notification is-primary\'>Thank you for you feedback</div>");
+	});
 });
 

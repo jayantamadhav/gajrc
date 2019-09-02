@@ -6,6 +6,7 @@ import os
 class Journal(models.Model):
 	journal_name 		= models.CharField(verbose_name = "Journal", max_length=100)
 	abbr_title			= models.CharField(verbose_name = "Abbr. Title", max_length=100, blank=True, default="N/A")
+	subject				= models.CharField(verbose_name = "subject", max_length=30, null= True, blank=True)
 	issn_print 			= models.CharField(verbose_name = "ISSN Print", max_length=20 )
 	issn_online			= models.CharField(verbose_name = "ISSN Online", max_length=20 )
 	frequency			= models.CharField(verbose_name = "Frequency", max_length=20, blank=True, default="N/A")

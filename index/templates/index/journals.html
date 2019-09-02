@@ -65,27 +65,12 @@
 							<a class="navbar-item" href="{% url 'about_us' %}">
 								About Us
 							</a>
+							<a class="navbar-item" href="{% url 'contact_us' %}">
+								Contact Us
+							</a>
 							<a class="navbar-item is-active" href="{% url 'journals' %}">
 								Journals
 							</a>
-
-							<!--<div class="navbar-item has-dropdown is-hoverable">
-								<a class="navbar-link">
-									Guidelines
-								</a>
-
-								<div class="navbar-dropdown">
-									<a class="navbar-item">
-										Editor Guidelines
-									</a>
-									<a class="navbar-item">
-										Reviewer Guidelines
-									</a>
-									<a class="navbar-item">
-										Manuscript Guidelines
-									</a>
-								</div>
-							</div>-->
 							<div class="navbar-item has-dropdown is-hoverable">
 								<a class="navbar-link">
 									For Authors
@@ -108,156 +93,153 @@
 								</div>
 							</div>	
 						</div>
-					</nav>
-				</section>
-				<section class="hero has-padding-20 has-margin-top-10">
-					<div class="hero-body">
-						<div class="container has-text-centered">
-							<h1 class="title is-size-1 is-size-2-mobile  has-text-primary">
-								Journals
-							</h1>
-						</div>
 					</div>
-				</section>
-			</div>
-			<section class="container has-padding-40 is-block has-background-white" style="box-shadow: 2px 2px 10px #333;border-radius: 5px">
-				<div class="container">
-					<p class="is-size-3 is-size-4-mobile">Journals</p><br>
-					<p>
-						GAJRC is a multidisciplinary, scholarly Open Access publisher focused on Genetic, Biomedical and Remedial missions in relation with Technical Knowledge as well. We crave to select ground-breaking research based on modernism, aptness, scientific connotation, prospective spectator’s interests, etc. We endeavor to provide by far and liberally accessible belvedere to researchers and practitioners in support of their novel and valuable ideas. We already have 2000+ Editorial Board members along with 5000+ Published articles in our box. Our Journals maintain a scrupulous, methodical, fair peer review System. Besides, quality control is riveted in each step of the publication process. 
-					</p>
-				</div>
-				<div class="grid-container has-margin-top-60">
-					{% if journals %}
-					{% for journal in journals %}
-					<div class="box">
-						<article class="media">
-							<div class="media-left">
-								<figure class="image is-64x128">
-									<img src = "{{ journal.journal_thumb.url }}">
-								</figure>
-							</div>
-							<div class="media-content">
-								<div class="content">
-									<p>
-										<a href="{% url 'journal_details' id=journal.id %}">{{ journal.journal_name }}</a><br>
-										<span class="has-text-danger"> ISSN : {{ journal.issn_online }} </span><br>
-										<span> Publisher : {{ journal.publisher }} </span><br>
-										<span> Country Origin : {{ journal.origin_country }} </span><br>
-										<span class="is-pulled-right">
-											<a href="{% url 'journal_details' id=journal.id %}" class="button is-outlined is-primary">View More</a>
-										</span>
-									</p>
-								</div>
-							</div>
-						</article>	
-					</div>
-					{% endfor %}
-					{% else %}
-						<p class="is-size-5 has-text-danger">No Journals yet, But keep tuned in..</p>
-					{% endif %}
-				</div>
+				</nav>
 			</section>
-			<section class="section is-size-6-mobile has-background-dark has-text-light has-margin-top-50">
-
-				<div class="has-text-centered"><p class="is-size-5">Article formats</p></div>
-				<div class="columns is-variable has-margin-top-10">
-					<div class="column is-6">
-						<div class="box has-background-dark">
-							<article class="media">
-								<div class="media-left">
-									<i class="fa fa-file-pdf-o fa-5x"></i>
-								</div>
-								<div class="media-content">
-									<div class="content">
-										<p>
-											PDF (Portable Document Format) is a file format that has captured all the elements of a printed document as an electronic image that you can view, navigate <a href="#" class="has-text-white">read more...</a>
-										</p>
-									</div>
-								</div>
-							</article>
-						</div>
+			<section class="hero has-padding-20 has-margin-top-10">
+				<div class="hero-body">
+					<div class="container has-text-centered">
+						<h1 class="title is-size-1 is-size-2-mobile  has-text-primary">
+							Journals
+						</h1>
 					</div>
-					<div class="column is-6">
-						<div class="box has-background-dark">
-							<article class="media">
-								<div class="media-left">
-									<i class="fa fa-file-text fa-5x"></i>
-								</div>
-								<div class="media-content">
-									<div class="content">
-										<p>
-											A full-text database is a compilation of documents or other information in the form of a database in which the complete text of each referenced document is <a href="#" class="has-text-white">read more...</a>
-										</p>
-									</div>
-								</div>
-							</article>
-						</div>
-					</div>
-				</div>
-				<div class="columns has-text-centered has-margin-top-20">
-					<div class="column " style="background-color: #3b5998;">
-						<a href="https://www.facebook.com/angela.roy.77312" target="_blank" class="fb"><i class="fa fa-facebook has-text-white"></i></a>
-					</div>
-					<div class="column" style="background-color: #00ACEE;">
-						<a href="https://twitter.com/lupine_online" class="tw" target="_blank"><i class="fa fa-twitter has-text-white"></i></a>
-					</div>
-					<div class="column" style="background-color: #0077b5;">
-						<a href="#" class="in" ><i class="fa fa-linkedin has-text-white"></i></a>
-					</div>
-					<div class="column" style="background-color: #db4a39;">
-						<a href="https://plus.google.com/u/0/+LupinePublishers" class="gp" target="_blank"><i class="fa fa-google-plus has-text-white"></i></a>
-					</div>
-					<div class="column"  style="background-color:#34526f">
-						<a href="https://lupinepublishers.tumblr.com/" class="be" target="_blank"><i class="fa fa-tumblr has-text-white"></i></a>
-					</div>
-				</div>
-				<div class="columns is-variable has-margin-top-20">
-					<div class="column">
-						<p class="is-size-5">Contact us</p><br>
-						<p class="is-size-7">
-							GAJRC Publishers<br>
-							Hojai, Assam<br>
-							pin : 782435<br>
-							INDIA<br>
-						</p>
-					</div>
-					<div class="column">
-						<p class="is-size-5">Useful Links</p><br>
-						<p class="is-size-7">
-							<a href="{% url 'index' %}" class="has-text-white">Home</a><br>
-							<a href="#" class="has-text-white">Aim and Scope</a><br>
-							<a href="{% url 'author_guidelines' %}" class="has-text-white">Author Guidelines</a><br>
-							<a href="#" class="has-text-white">Subject Area</a><br>
-							<a href="#" class="has-text-white">Contact Us</a><br>
-						</p>
-					</div>
-					<div class="column">
-						<p class="is-size-5">About Us</p><br>
-						<p class="is-size-7">
-							GAJRC(Global Academic Journals and Research Consortium) is an international scholar’s publisher for open access scientific journals in both print and online publishing from Kenya..<a href="#" class="has-text-primary"> Read More</a>
-						</p>
-					</div>
-					<div class="column">
-						<a id="comment-button"><p class="is-size-5 has-text-white">Leave a comment <i class="fa fa-chevron-down fa-xs"> </i></p></a>
-						<div id="comment-container" style="display: none">
-							<div class="field">
-								<div class="control ">
-									<input class="input is-small has-margin-5" type="text" placeholder="Enter Name">
-									<input class="input is-small has-margin-5" type="email" placeholder="Enter Email">
-									<textarea class="textarea is-small has-margin-5" type="textarea" placeholder="Comment Here.."></textarea>					
-									<button class="button is-outlined is-primary has-margin-5" >Submit</button>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="container has-text-centered">
-					<p> &copy;GAJRC 2019, All Rights Reserved</p>
-					<p class="has-text-grey is-size-6">developed by JM</p>
 				</div>
 			</section>
 		</div>
 
-	</body>
-	</html>
+		<section class="container has-padding-40 is-block has-background-white" style="box-shadow: 2px 2px 10px #333;border-radius: 5px">
+			<div class="container">
+				<p class="is-size-3 is-size-4-mobile">Journals</p><br>
+				<p>
+					GAJRC is run under Scholars Middle east Publisher. Which is a multidisciplinary, scholarly Open
+					Access publisher focused on Scientific Research Publication in all the discipline. We crave to select
+					ground-breaking research based on modernism, aptness, scientific connotation, prospective
+					spectator’s interests, etc. Our Group of Publisher already have 1200+ Editorial Board members along
+					with 17000+ Published articles in our box. Our team are truly dedicated to best publication and Our
+					Journals maintain a scrupulous, methodical, fair peer review System. Besides, quality control is
+					riveted in each step of the publication process. 
+				</p>
+			</div>
+			<div class="grid-container has-margin-top-60">
+				{% if journals %}
+				{% for journal in journals %}
+				<div class="box">
+					<article class="media">
+						<div class="media-left">
+							<figure class="image is-64x128">
+								<img src = "{{ journal.journal_thumb.url }}">
+							</figure>
+						</div>
+						<div class="media-content">
+							<div class="content">
+								<p>
+									<a href="{% url 'journal_details' id=journal.id %}">{{ journal.journal_name }}</a><br>
+									<span class="has-text-danger"> ISSN : {{ journal.issn_online }} </span><br>
+									<span> Publisher : {{ journal.publisher }} </span><br>
+									<span> Country Origin : {{ journal.origin_country }} </span><br>
+									<span class="is-pulled-right">
+										<a href="{% url 'journal_details' id=journal.id %}" class="button is-outlined is-primary">View More</a>
+									</span>
+								</p>
+							</div>
+						</div>
+					</article>	
+				</div>
+				{% endfor %}
+				{% else %}
+				<p class="is-size-5 has-text-danger">No Journals yet, But keep tuned in..</p>
+				{% endif %}
+			</div>
+		</section>
+		<!--FOOTER-->
+		<section class="section is-size-6-mobile has-background-dark has-text-light has-margin-top-100">
+
+			<div class="has-text-centered"><p class="is-size-5">Article formats</p></div>
+			<div class="columns is-variable has-margin-top-10">
+				<div class="column is-6">
+					<div class="box has-background-dark">
+						<article class="media">
+							<div class="media-left">
+								<i class="fa fa-file-pdf-o fa-5x"></i>
+							</div>
+							<div class="media-content">
+								<div class="content">
+									<p>
+										PDF (Portable Document Format) is a file format that has captured all the elements of a printed document as an electronic image that you can view, navigate <a href="https://www.google.com/search?q=pdf" class="has-text-white" target="_blank">read more...</a>
+									</p>
+								</div>
+							</div>
+						</article>
+					</div>
+				</div>
+				<div class="column is-6">
+					<div class="box has-background-dark">
+						<article class="media">
+							<div class="media-left">
+								<i class="fa fa-file-text fa-5x"></i>
+							</div>
+							<div class="media-content">
+								<div class="content">
+									<p>
+										A full-text database is a compilation of documents or other information in the form of a database in which the complete text of each referenced document is <a href="https://www.google.com/search?q=text+file" class="has-text-white" target="_blank">read more...</a>
+									</p>
+								</div>
+							</div>
+						</article>
+					</div>
+				</div>
+			</div>
+			<div class="is-divider"></div>
+			<div class="columns is-variable has-margin-top-20">
+				<div class="column">
+					<p class="is-size-5">Contact us</p><br>
+					<p class="is-size-7 has-text-grey">
+						Scholars Middle East Publishers,<br>
+						Gold Souk, Deira, d – 24 D85,<br>
+						Dubai, United Arab Emirates<br><br>
+
+						+971-54-717-2569<br>
+						gajrcofficial@gmail.com<br>
+					</p>
+				</div>
+				<div class="column">
+					<p class="is-size-5">Useful Links</p><br>
+					<p class="is-size-7 has-text-grey">
+						Home<br>
+						Aim and Scope<br>
+						Author Guidelines<br>
+						Subject Area<br>
+					</p>
+				</div>
+				<div class="column">
+					<p class="is-size-5">About Us</p><br>
+					<p class="is-size-7 has-text-grey">
+						GAJRC (Global Acedemic Journals and Research Consortium) is an international scholar’s community
+						which publish research paper under Scholars Middle East Publisher for open access scientific
+						journals in both print and online publishing from Dubai, UAE.<a href="#" class="has-text-white"> Read More Here</a>
+					</p>
+				</div>
+				<div class="column">
+					<a id="comment-button"><p class="is-size-5 has-text-white">Leave a Feedback <i class="fa fa-chevron-down fa-xs"> </i></p></a>
+					<div id="comment-container" style="display: none">
+						<div class="field">
+							<div class="control ">
+								<input class="input is-small has-margin-5" type="text" placeholder="Enter Name">
+								<input class="input is-small has-margin-5" type="email" placeholder="Enter Email">
+								<textarea class="textarea is-small has-margin-5" type="textarea" placeholder="Comment Here.."></textarea>					
+								<button id="leave-comment" class="button is-outlined is-primary has-margin-5" >Submit</button>
+							</div>
+						</div>
+					</div>
+					<div class="thankyou-container"></div>
+				</div>
+			</div>
+			<div class="container has-text-centered">
+				<p> &copy; CompanyName 2019, All Rights Reserved</p>
+				<p class="has-text-grey is-size-6"><a href="https://github.com/jayantamadhav" class="has-text-light" target="_blank">Developed by JM</a></p>
+			</div>
+		</section>
+	</div>
+
+</body>
+</html>

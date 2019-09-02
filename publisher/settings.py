@@ -28,7 +28,7 @@ SECRET_KEY = 'q&7c&5o)ogpz@airk$(a_c9x%3x5d)+iigd@r6@cmc0-3e*+(f'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['www.gajrc.com', 'gajrc.com', '156.67.214.16']
 
 
 # Application definition
@@ -78,18 +78,20 @@ WSGI_APPLICATION = 'publisher.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-'''DATABASES = {
+'''
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
-}'''
+}
+'''
 DATABASES = {
 'default': {
     'ENGINE': 'django.db.backends.postgresql_psycopg2',
     'NAME': 'gajrc',
-    'USER': 'admin',
-    'PASSWORD': 'admin123',
+    'USER': 'gajrc',
+    'PASSWORD': 'gajrc123',
     'HOST': 'localhost',
     'PORT': '5432',
 }
@@ -135,5 +137,6 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
 
 

@@ -4,16 +4,21 @@ from index.models import Journal, Volume, Article, TopEditor, FeaturedArticle, E
 # Create your views here.
 def index(request):
 	context = {}
+	journals = Journal.objects.all()
 	top_editors = TopEditor.objects.all()
 	featured_articles = FeaturedArticle.objects.all()
 	context = {
 		'top_editors' : top_editors,
-		'featured_articles' : featured_articles
+		'featured_articles' : featured_articles,
+		'journals' : journals
 	}
 	return render(request, 'index/index.html', context )
 
 def about_us(request):
     return render(request, 'index/about_us.html', {})
+
+def contact_us(request):
+    return render(request, 'index/contact_us.html', {})
 
 def submitManuscript(request):
     return render(request, 'index/submitManuscript.html', {})
@@ -27,6 +32,7 @@ def journals(request):
 def journal_details(request, id):
  	context = {}
  	journal_id = id
+ 	journals = Journal.objects.all()
  	journal = Journal.objects.get(id = journal_id)
  	volumes = Volume.objects.filter(journal_id = journal_id).order_by('-volume_year')
  	editors = Editor.objects.filter(journal_id=journal_id)
@@ -40,7 +46,8 @@ def journal_details(request, id):
  		'journal' 	: journal,
  		'volumes' 	: volumes,
  		'articles'	: articles,
- 		'editors'	: editors
+ 		'editors'	: editors,
+ 		'journals'	: journals
  	}
  	return render(request, 'index/journal_details.html', context)
 

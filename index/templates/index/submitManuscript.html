@@ -46,6 +46,9 @@
 							<a class="navbar-item" href="{% url 'about_us' %}">
 								About Us
 							</a>
+							<a class="navbar-item" href="{% url 'contact_us' %}">
+								Contact Us
+							</a>
 							<a class="navbar-item" href="{% url 'journals' %}">
 								Journals
 							</a>
@@ -192,13 +195,42 @@
 
 						</div><br>
 						<div class="controll is-pulled-right">
-							<div class="button is-outlined is-primary">Submit Manuscript</div>
+							<button id="submit-manuscript" class="button is-outlined is-primary">Submit Manuscript</button>
 						</div>
 					</div>
 				</div>
 			</div>
+		</section>
+		<section class="section">
+		</section>
+	</div>
+	<div class="modal">
+		<div class="modal-background"></div>
+		<div class="modal-content">
+			<div class="container is-block has-background-white has-padding-20 has-margin-5" style="border-radius: 5px">
+				<p class="is-size-4"><Strong>Provide new details</Strong></p><br>
+				<div class="control" id="modal-control">
+					<div class="notification is-warning">Oops, something went wrong. We are currently fixing it..Regret any inconveniences</div>
+					<p> Here's what you can do : </p>
+					<p> 1. Contact Us to submit your article </p>
+					<p> 2. Send
+					 the article directly to this email address - <strong>easpublisher@gmail.com</strong></p>
+				</div>
+				<div class="has-text-right has-margin-top-30">
+					<button class="button is-outlined is-danger" id="close">Back</button>
+				</div>
+			</div>
 		</div>
 	</div>
-	
+	<script>
+		$(document).ready(function(){
+			$('#submit-manuscript').click(function(){
+				$('.modal').addClass('is-active');
+			});
+			$('#close').click(function(){
+				$('.modal').removeClass('is-active');
+			});
+		});
+	</script>
 </body>
 </html>

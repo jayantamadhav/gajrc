@@ -10,9 +10,12 @@
 	<link rel="stylesheet" href="{% static 'css/main.css' %}">
 	<link rel="stylesheet" href="{% static 'css/bulmahelper.min.css' %}">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bulma-carousel.min.css' %}"/>
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="{% static 'js/main.js' %}"></script>
 	<script src="{% static 'js/dropzone.js' %}"></script>
+	<script src="{% static 'js/bulma-carousel.min.js' %}"></script>
 	<style>
 	.banner{
 		background-image:url( {{journal.journal_cover.url}} );
@@ -24,6 +27,12 @@
 	}
 	.banner-name{
 		background-color: rgba(0,0,0,0.5);
+	}
+	.member-items{
+		background-color: white;
+		width:200px;
+		height:100px;
+		padding: 20px;
 	}
 </style>
 </head>
@@ -60,6 +69,9 @@
 
 							<a class="navbar-item" href="{% url 'about_us' %}">
 								About Us
+							</a>
+							<a class="navbar-item" href="{% url 'contact_us' %}">
+								Contact Us
 							</a>
 							<a class="navbar-item" href="{% url 'journals' %}">
 								Journals
@@ -106,8 +118,7 @@
 
 		<!--Main Content-->
 		<section class="has-padding-20">
-			<div class="columns is-variable">
-				<!--Main Block-->
+			<div class="columns">
 				<div class="column is-9">
 					<!--Tabs-->
 					<div class="has-margin-top-20 is-block has-background-white"   style="box-shadow: 2px 2px 10px #333;border-radius: 5px">
@@ -188,17 +199,17 @@
 										{% endfor %}
 									</table>
 									{% else %}
-										<p class="has-text-danger">No entries yet, but soon..</p>
+									<p class="has-text-danger">No entries yet, but soon..</p>
 									{% endif%}
 								</p>
-								
+
 							</div>
 
 							<!--Archive tab-->
 							<div id="4" class="content-tab" style="display:none">
 								{% if volumes %}
 								{% regroup volumes|dictsortreversed:"volume_year" by volume_year as volume_year_list %}
-								
+
 								<ul>
 									{% for volume_year in volume_year_list %}
 									<li><p class="is-size-5 is-size-6-mobile">{{ volume_year.grouper }}</p>
@@ -305,152 +316,191 @@
 						<button class="button is-large is-fullwidth is-primary"  style="box-shadow: 2px 2px 4px #333;border-radius: 5px">Pay Now</button>
 					</div>
 
-					<!--Browsing subjects-->
-					<div class="container has-padding-20 has-margin-top-20 is-block has-background-dark has-text-white has-text-centered"   style="box-shadow: 2px 2px 10px #333;border-radius: 10px">
-						<p class="is-size-5 is-mobile-6" style="color:#ec6400;">Browse by Subjects</p><br><br>
-						<p>Medical Sciences</p>
-						<p>Biosciences</p>
-						<p>Biomedical Engineering</p>
-						<p>Oral Health Care</p>
-						<p>Dentistry</p>
-						<p>Sports Medicine</p>
-						<p>Orthopedics</p>
-						<p>Hepatology</p>
-						<p>Gastroenterology</p>
-						<p>Inorganic Chemistry</p>
-						<p>Organic Chemistry</p>
-						<p>Research and Reviews</p>
-						<p>Agriculture</p>
-						<p>Cancer</p>
-						<p>Oncology</p>
-						<p>Cardiovascular Research</p>
-						<p>Womens Healthcare</p>
-						<p>Gynecology</p>
-						<p>Health care</p>
-						<p>Nursing</p>
-						<p>Neonatology</p>
-						<p>Pediatrics</p>
-						<p>Material Science</p>
-						<p>Civil Engineering </p>
-					</div>
-				</div>
-			</section>
-
-			<!--Footer-->
-			<section class="section is-size-6-mobile has-background-dark has-text-light has-margin-top-50">
-
-				<div class="has-text-centered"><p class="is-size-5">Article formats</p></div>
-				<div class="columns is-variable has-margin-top-10">
-					<div class="column is-6">
-						<div class="box has-background-dark">
-							<article class="media">
-								<div class="media-left">
-									<i class="fa fa-file-pdf-o fa-5x"></i>
-								</div>
-								<div class="media-content">
-									<div class="content">
-										<p>
-											PDF (Portable Document Format) is a file format that has captured all the elements of a printed document as an electronic image that you can view, navigate <a href="#" class="has-text-white">read more...</a>
-										</p>
-									</div>
-								</div>
-							</article>
-						</div>
-					</div>
-					<div class="column is-6">
-						<div class="box has-background-dark">
-							<article class="media">
-								<div class="media-left">
-									<i class="fa fa-file-text fa-5x"></i>
-								</div>
-								<div class="media-content">
-									<div class="content">
-										<p>
-											A full-text database is a compilation of documents or other information in the form of a database in which the complete text of each referenced document is <a href="#" class="has-text-white">read more...</a>
-										</p>
-									</div>
-								</div>
-							</article>
+					<!--subject area-->
+					<div class="container has-margin-top-20">
+						<div class="is-block has-background-dark has-padding-10" style="border-radius:5px;box-shadow: 2px 2px 10px #333;">
+							<p class="has-text-centered is-size-4" style="color:#ff811f">Subject Area</p>
+							{% if journals %}
+							{% for journal in journals %}
+							<p class="is-size-6"><a href="{% url 'journal_details' id=journal.id %}" class="has-text-white">{{journal.subject}}</a></p>
+							{% endfor %}
+							{% else %}
+							<p class="has-text-danger">No journals yet, stay tuned -or- contact support</p>
+							{% endif %}
 						</div>
 					</div>
 				</div>
-				<div class="columns has-text-centered has-margin-top-20">
-					<div class="column " style="background-color: #3b5998;">
-						<a href="https://www.facebook.com/angela.roy.77312" target="_blank" class="fb"><i class="fa fa-facebook has-text-white"></i></a>
-					</div>
-					<div class="column" style="background-color: #00ACEE;">
-						<a href="https://twitter.com/lupine_online" class="tw" target="_blank"><i class="fa fa-twitter has-text-white"></i></a>
-					</div>
-					<div class="column" style="background-color: #0077b5;">
-						<a href="#" class="in" ><i class="fa fa-linkedin has-text-white"></i></a>
-					</div>
-					<div class="column" style="background-color: #db4a39;">
-						<a href="https://plus.google.com/u/0/+LupinePublishers" class="gp" target="_blank"><i class="fa fa-google-plus has-text-white"></i></a>
-					</div>
-					<div class="column"  style="background-color:#34526f">
-						<a href="https://lupinepublishers.tumblr.com/" class="be" target="_blank"><i class="fa fa-tumblr has-text-white"></i></a>
+			</div>
+		</section>
+
+		<!--members in-->
+		<section class="section is-block has-background-dark has-margin-top-50 has-text-white" style="box-shadow: 2px 2px 10px #333;">
+			<p class="is-size-4 has-text-light"><span style="color:#0f5a00;font-weight: 900"> | </span> Members in</p><br><br>
+			<div class="carousel">
+				<div class="member-items item-1">
+					<img src="{% static 'media/member1.png' %}">
+				</div>
+				<div class="member-items item-2">
+					<img src="{% static 'media/member2.svg' %}">
+				</div>
+				<div class="member-items item-3">
+					<img src="{% static 'media/member3.png' %}">
+				</div>
+				<div class="member-items item-4">
+					<img src="{% static 'media/member4.png' %}">
+				</div>
+				<div class="member-items item-5">
+					<img src="{% static 'media/member5.png' %}">
+				</div>
+				<div class="member-items item-6">
+					<img src="{% static 'media/member6.png' %}">
+				</div>
+				<div class="member-items item-7">
+					<img src="{% static 'media/member7.png' %}">
+				</div>
+				<div class="member-items item-8">
+					<img src="{% static 'media/member8.png' %}">
+				</div>
+				<div class="member-items item-9">
+					<img src="{% static 'media/member9.png' %}">
+				</div>
+				<div class="member-items item-10">
+					<img src="{% static 'media/member10.png' %}">
+				</div>
+
+			</div>
+		</section>
+
+		<!--FOOTER-->
+		<section class="section is-size-6-mobile has-background-dark has-text-light has-margin-top-100">
+
+			<div class="has-text-centered"><p class="is-size-5">Article formats</p></div>
+			<div class="columns is-variable has-margin-top-10">
+				<div class="column is-6">
+					<div class="box has-background-dark">
+						<article class="media">
+							<div class="media-left">
+								<i class="fa fa-file-pdf-o fa-5x"></i>
+							</div>
+							<div class="media-content">
+								<div class="content">
+									<p>
+										PDF (Portable Document Format) is a file format that has captured all the elements of a printed document as an electronic image that you can view, navigate <a href="https://www.google.com/search?q=pdf" class="has-text-white" target="_blank">read more...</a>
+									</p>
+								</div>
+							</div>
+						</article>
 					</div>
 				</div>
-				<div class="columns is-variable has-margin-top-20">
-					<div class="column">
-						<p class="is-size-5">Contact us</p><br>
-						<p class="is-size-7">
-							GAJRC Publishers<br>
-							Hojai, Assam<br>
-							pin : 782435<br>
-							INDIA<br>
-						</p>
-					</div>
-					<div class="column">
-						<p class="is-size-5">Useful Links</p><br>
-						<p class="is-size-7">
-							<a href="{% url 'index' %}" class="has-text-white">Home</a><br>
-							<a href="#" class="has-text-white">Aim and Scope</a><br>
-							<a href="{% url 'author_guidelines' %}" class="has-text-white">Author Guidelines</a><br>
-							<a href="#" class="has-text-white">Subject Area</a><br>
-							<a href="#" class="has-text-white">Contact Us</a><br>
-						</p>
-					</div>
-					<div class="column">
-						<p class="is-size-5">About Us</p><br>
-						<p class="is-size-7">
-							GAJRC(Global Academic Journals and Research Consortium) is an international scholar’s publisher for open access scientific journals in both print and online publishing from Kenya..<a href="#" class="has-text-primary"> Read More</a>
-						</p>
-					</div>
-					<div class="column">
-						<a id="comment-button"><p class="is-size-5 has-text-white">Leave a comment <i class="fa fa-chevron-down fa-xs"> </i></p></a>
-						<div id="comment-container" style="display: none">
-							<div class="field">
-								<div class="control ">
-									<input class="input is-small has-margin-5" type="text" placeholder="Enter Name">
-									<input class="input is-small has-margin-5" type="email" placeholder="Enter Email">
-									<textarea class="textarea is-small has-margin-5" type="textarea" placeholder="Comment Here.."></textarea>					
-									<button class="button is-outlined is-primary has-margin-5" >Submit</button>
+				<div class="column is-6">
+					<div class="box has-background-dark">
+						<article class="media">
+							<div class="media-left">
+								<i class="fa fa-file-text fa-5x"></i>
+							</div>
+							<div class="media-content">
+								<div class="content">
+									<p>
+										A full-text database is a compilation of documents or other information in the form of a database in which the complete text of each referenced document is <a href="https://www.google.com/search?q=text+file" class="has-text-white" target="_blank">read more...</a>
+									</p>
 								</div>
+							</div>
+						</article>
+					</div>
+				</div>
+			</div>
+			<div class="is-divider"></div>
+			<div class="columns is-variable has-margin-top-20">
+				<div class="column">
+					<p class="is-size-5">Contact us</p><br>
+					<p class="is-size-7 has-text-grey">
+						Scholars Middle East Publishers,<br>
+						Gold Souk, Deira, d – 24 D85,<br>
+						Dubai, United Arab Emirates<br><br>
+
+						+971-54-717-2569<br>
+						gajrcofficial@gmail.com<br>
+					</p>
+				</div>
+				<div class="column">
+					<p class="is-size-5">Useful Links</p><br>
+					<p class="is-size-7 has-text-grey">
+						Home<br>
+						Aim and Scope<br>
+						Author Guidelines<br>
+						Subject Area<br>
+					</p>
+				</div>
+				<div class="column">
+					<p class="is-size-5">About Us</p><br>
+					<p class="is-size-7 has-text-grey">
+						GAJRC (Global Acedemic Journals and Research Consortium) is an international scholar’s community
+						which publish research paper under Scholars Middle East Publisher for open access scientific
+						journals in both print and online publishing from Dubai, UAE.<a href="#" class="has-text-white"> Read More Here</a>
+					</p>
+				</div>
+				<div class="column">
+					<a id="comment-button"><p class="is-size-5 has-text-white">Leave a Feedback <i class="fa fa-chevron-down fa-xs"> </i></p></a>
+					<div id="comment-container" style="display: none">
+						<div class="field">
+							<div class="control ">
+								<input class="input is-small has-margin-5" type="text" placeholder="Enter Name">
+								<input class="input is-small has-margin-5" type="email" placeholder="Enter Email">
+								<textarea class="textarea is-small has-margin-5" type="textarea" placeholder="Comment Here.."></textarea>					
+								<button id="leave-comment" class="button is-outlined is-primary has-margin-5" >Submit</button>
 							</div>
 						</div>
 					</div>
+					<div class="thankyou-container"></div>
 				</div>
-				<div class="container has-text-centered">
-					<p> &copy;GAJRC 2019, All Rights Reserved</p>
-					<p class="has-text-grey is-size-6">developed by JM</p>
-				</div>
-			</section>
-		</div>
-		<script type="text/javascript">
-			function openTab(evt, tabName) {
-				var i, x, tablinks;
-				x = document.getElementsByClassName("content-tab");
-				for (i = 0; i < x.length; i++) {
-					x[i].style.display = "none";
-				}
-				tablinks = document.getElementsByClassName("tab");
-				for (i = 0; i < x.length; i++) {
-					tablinks[i].className = tablinks[i].className.replace(" is-active", "");
-				}
-				document.getElementById(tabName).style.display = "block";
-				evt.currentTarget.className += " is-active";
+			</div>
+			<div class="container has-text-centered">
+				<p> &copy; CompanyName 2019, All Rights Reserved</p>
+				<p class="has-text-grey is-size-6"><a href="https://github.com/jayantamadhav" class="has-text-light" target="_blank">Developed by JM</a></p>
+			</div>
+		</section>
+	</div>
+	<script type="text/javascript">
+		function openTab(evt, tabName) {
+			var i, x, tablinks;
+			x = document.getElementsByClassName("content-tab");
+			for (i = 0; i < x.length; i++) {
+				x[i].style.display = "none";
 			}
-		</script>
-	</body>
-	</html>
+			tablinks = document.getElementsByClassName("tab");
+			for (i = 0; i < x.length; i++) {
+				tablinks[i].className = tablinks[i].className.replace(" is-active", "");
+			}
+			document.getElementById(tabName).style.display = "block";
+			evt.currentTarget.className += " is-active";
+		} 
+		$(document).ready(function(){
+			var carousels = bulmaCarousel.attach('.carousel', {
+				slidesToScroll: 1,
+				slidesToShow: 6,
+				autoplay: true,
+				autoplaySpeed: 3000,
+				pagination: false,
+				infinite: true,
+				breakpoints: [{ 
+					changePoint: 480, 
+					slidesToShow: 1, 
+					slidesToScroll: 1 
+				}, { 
+					changePoint: 640, 
+					slidesToShow: 2, 
+					slidesToScroll: 2 
+				}, { 
+					changePoint: 768, 
+					slidesToShow: 3, 
+					slidesToScroll: 1 
+				}, {
+					changePoint: 1280, 
+					slidesToShow: 3, 
+					slidesToScroll: 1 
+				} ]
+			});
+		});
+	</script>
+</body>
+</html>
