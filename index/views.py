@@ -13,7 +13,8 @@ def index(request):
 		'journals' : journals
 	}
 	return render(request, 'index/index.html', context )
-
+def error(request):
+	return render(request, 'index/error.html', {})
 def about_us(request):
     return render(request, 'index/about_us.html', {})
 

@@ -19,14 +19,12 @@ from django.conf.urls import url
 from django.contrib.staticfiles.urls import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from . import settings
- 
+from django.conf.urls import handler404, handler500
+from index import views as index_views
  
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('index.urls')),
     url(r'^admin/', include('nested_admin.urls')),
-]
-
-urlpatterns += staticfiles_urlpatterns()
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
