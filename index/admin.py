@@ -69,3 +69,5 @@ admin.site.register(Journal, JournalAdmin)
 admin.site.register(TopEditor, TopEditorAdmin)
 admin.site.register(FeaturedArticle, FeaturedArticleAdmin)
 admin.site.register(JournalFee, JournalFeeAdmin)
+
+admin.site.register(MemberIn)

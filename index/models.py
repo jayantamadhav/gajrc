@@ -90,3 +90,7 @@ class JournalFee(models.Model):
 	journal = models.ForeignKey(Journal, on_delete=models.CASCADE)
 	usd 	= models.PositiveIntegerField(verbose_name="USD")
 	inr 	= models.PositiveIntegerField(verbose_name="INR")
+
+class MemberIn(models.Model):
+	company_logo = models.ImageField(upload_to='membersin/', blank=True)
+	company_name = models.CharField(verbose_name='Company name', blank=True, max_length=200)

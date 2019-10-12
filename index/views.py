@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from index.models import Journal, Volume, Article, TopEditor, FeaturedArticle, Editor, JournalFee
+from index.models import *
 
 # Create your views here.
 def index(request):
@@ -7,10 +7,12 @@ def index(request):
 	journals = Journal.objects.all()
 	top_editors = TopEditor.objects.all()
 	featured_articles = FeaturedArticle.objects.all()
+	memberin = MemberIn.objects.all()
 	context = {
 		'top_editors' : top_editors,
 		'featured_articles' : featured_articles,
-		'journals' : journals
+		'journals' : journals,
+		'memberin' : memberin
 	}
 	return render(request, 'index/index.html', context )
 def error(request):
