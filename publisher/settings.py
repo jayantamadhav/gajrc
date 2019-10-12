@@ -22,10 +22,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'q&7c&5o)ogpz@airk$(a_c9x%3x5d)+iigd@r6@cmc0-3e*+(f'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-#ALLOWED_HOSTS = ['www.gajrc.com', 'gajrc.com', '156.67.214.16']
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['www.gajrc.com', 'gajrc.com', '156.67.214.16']
+#ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -87,7 +87,7 @@ DATABASES = {
 
 #--------DATABASES--------#
 #POSTGRESQL DB
-'''DATABASES = {
+DATABASES = {
 'default': {
     'ENGINE': 'django.db.backends.postgresql_psycopg2',
     'NAME': 'gajrc',
@@ -96,14 +96,15 @@ DATABASES = {
     'HOST': 'localhost',
     'PORT': '5432',
 }
-}'''
+}
 #SQLite DB
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
-}
+}'''
 
 
 # Password validation
