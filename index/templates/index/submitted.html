@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>SAR Publication - Thank You</title>
+
+	<meta name="viewport" content= "width=device-width, initial-scale=1.0"> 
+
+	<link rel="stylesheet" href="{% static 'css/custom.css' %}">
+	<link rel="stylesheet" href="{% static 'css/main.css' %}">
+	<link rel="stylesheet" href="{% static 'css/bulmahelper.min.css' %}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="{% static 'js/main.js' %}"></script>
+	<script src="{% static 'js/dropzone.js' %}"></script>
+</head>
+<body>
+	<div class="has-margin-bottom-100" style='height:100vh' >
+		<!--HEADER-->
+		{% include 'index/header.html' %}
+		<div style='background-color: #353b48;padding-top: 50px'>
+			<div class='container'>
+				<p class='has-text-light is-size-2' style='border-bottom:5px solid #e67e22'>Submission Received</p>
+			</div>
+		</div>
+
+		<div class='container is-block has-background-light  has-padding-50 has-margin-top-50'>
+			<p class='is-size-4'>
+				<span class='is-size-2'>Thank you</span> for submitting the manuscript,<br>
+				We have received the request and its under evaluation.
+			</p>
+			<br><br><br><br><br>
+			<p class='has-text-danger is-size-6'>Redirecting to home...</p>
+		</div>
+
+	</div>
+	<script>
+		var delay = 5000; 
+		setTimeout(function(){ window.location = '{% url "index" %}'; }, delay);
+	</script>
+</body>
+</html>

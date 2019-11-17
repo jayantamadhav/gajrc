@@ -5,7 +5,8 @@ import os
 
 class Journal(models.Model):
 	journal_name 		= models.CharField(verbose_name = "Journal", max_length=100)
-	abbr_title			= models.CharField(verbose_name = "Abbr. Title", max_length=100, blank=True, default="N/A")
+	journal_url			= models.CharField(verbose_name = "url", max_length=100)
+	abbr_title			= models.CharField(verbose_name = "Abbr. Title", max_length=100)
 	subject				= models.CharField(verbose_name = "subject", max_length=30, null= True, blank=True)
 	issn_print 			= models.CharField(verbose_name = "ISSN Print", max_length=20 )
 	issn_online			= models.CharField(verbose_name = "ISSN Online", max_length=20 )
@@ -15,6 +16,7 @@ class Journal(models.Model):
 	language			= models.CharField(verbose_name = "Language", max_length=20, blank=True, default="N/A")
 	publisher			= models.CharField(verbose_name = "Publisher", max_length=50, blank=True, default="N/A")
 	journal_info		= models.TextField(verbose_name = "Info", max_length=2000)
+	journal_scope		= models.TextField(verbose_name = 'Scope', max_length=2000, null=True, blank=True)
 	indexing_factor		= models.CharField(verbose_name = "Index Factor", max_length=20)
 	journal_cover		= models.ImageField(upload_to ='journals/', verbose_name = "Cover")
 	journal_thumb		= models.ImageField(upload_to ='journals/', verbose_name = "Thumbnail")
@@ -38,6 +40,7 @@ class Article(models.Model):
 	article_name 		= models.CharField(verbose_name = "Article", max_length=100)
 	author				= models.CharField(verbose_name = "Author", max_length=50)
 	article 			= models.FileField(upload_to='articles/')
+	doi 				= models.CharField(verbose_name='DOI', max_length=100)
 	publish_date		= models.DateField()
 
 	def __str__(self):
@@ -48,7 +51,7 @@ class Editor(models.Model):
 	designation 		= models.CharField(verbose_name="Designation", max_length=50)
 	editor_name 		= models.CharField(verbose_name="Name", max_length=50)
 	editor_info 		= models.CharField(verbose_name="Info", max_length=1000)
-	profile				= models.ImageField(upload_to='editors/', blank=True)
+	profile				= models.ImageField(upload_to='editors/', blank=True, null=True)
 
 	def __str__(self):
 		return self.editor_name
@@ -63,9 +66,11 @@ def validate_only_ten(obj):
 
 class FeaturedArticle(models.Model):
 	article_name 		= models.CharField(verbose_name = "Article", max_length=100)
+	article_type		= models.CharField(verbose_name="Type", max_length=40)
 	author				= models.CharField(verbose_name = "Author", max_length=50)
 	article 			= models.FileField(upload_to='features_articles/', blank=True)
 	publish_date		= models.DateField()
+	doi 				= models.CharField(verbose_name='DOI', max_length=100)
 
 	def clean(self):
 		validate_only_ten(self)
@@ -77,7 +82,7 @@ class TopEditor(models.Model):
 	designation 		= models.CharField(verbose_name="Designation", max_length=50)
 	editor_name 		= models.CharField(verbose_name="Name", max_length=50)
 	editor_info 		= models.CharField(verbose_name="Info", max_length=1000)
-	profile				= models.ImageField(upload_to='editors/', blank=True)
+	profile				= models.ImageField(upload_to='editors/', blank=True, null=True)
 
 	def __str__(self):
 		return self.editor_name

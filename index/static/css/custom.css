@@ -1,10 +1,3 @@
-
-.index-background-container {
-  background-image: url('../media/bg-slideshow31.jpg');
-  background-position: center center;
-  background-size: cover;
-  background-attachment: fixed;
-}
 .navbar-brand
 {
     position: relative;
@@ -12,4 +5,57 @@
     width: 170px;
     left: 15px;
     max-height: 70px; /* height of the navbar */
+}.navbar-item:hover{
+  background-color: #d35400;
+}
+.navbar-link:hover{
+  background-color: #141E30;
+}
+.article-button:hover{
+  color: white;
+  background-color: #2C3A47;
+}
+.article-button{
+  display: inline block;
+  background-color: #CAD3C8;
+  color:#2C3A47;
+  padding:7px;
+  margin-right: 10px;
+  border-radius: 10px;
+  border:1px solid #CAD3C8;
+  }
+.navbar-container{
+  background-color: #353b48;
+}
+.dark-button{
+  display: inline ;
+  margin:20px;
+  background-color: #353b48;
+  color:white;
+  padding:20px;
+  border: 2px solid white;
+  border-radius: 5px;
+}
+.dark-button:hover{
+  background-color: #40739e;
+  color:white;
+  border: 2px solid white;
+  cursor: -webkit-grab; 
+  cursor: grab;
+}
+
+.light-button{
+  display: inline;
+  margin:20px;
+  background-color: #e1b12c;
+  color: black;
+  padding:20px;
+  border: 2px solid #e1b12c;
+  border-radius: 5px;
+}
+.light-button:hover{
+  background-color: #fbc531;
+  border: 2px solid #fbc531;
+  cursor: -webkit-grab; 
+  cursor: grab;
 }

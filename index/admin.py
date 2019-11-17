@@ -38,6 +38,8 @@ class EditorInline(NestedStackedInline):
     fk_name = 'journal'
 
 class JournalAdmin(NestedModelAdmin):
+
+    list_display = ('journal_name', 'journal_url', 'origin_country')
     model = Journal
     inlines = [EditorInline,VolumeInline]
 

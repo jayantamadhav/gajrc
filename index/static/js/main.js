@@ -14,5 +14,22 @@ $(document).ready(function() {
 		$('comment-container').slideToggle('slow');
 		$('thankyou-container').html("<div class=\'is-notification is-primary\'>Thank you for you feedback</div>");
 	});
+	$('.members-in').slick({
+		infinite: true,
+		slidesToShow: 6,
+		slidesToScroll: 1,
+		autoplay: true,
+		autoplaySpeed: 2000,
+		arrows: false
+	});
+
+	$('.journal-carousel').slick({
+		infinite: true,
+		slidesToShow: 3,
+		slidesToScroll: 1,
+		autoplay: true,
+		autoplaySpeed: 4000,
+		arrows: false
+	});
 });
 

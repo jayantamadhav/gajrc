@@ -1,0 +1,80 @@
+{% load static %}
+<!--top editors-->
+<div class="container">
+	<div class="card" >
+		<div class="card-header">
+			<div class='has-padding-10' style='width:100%; background-color: #006266;'>
+				<p class="has-text-centered is-size-4 has-text-light">Top Editors</p>
+			</div>
+		</div>
+		<div style='overflow-y: scroll; max-height: 300px;'>
+			{% if top_editors%}
+			{% for editor in top_editors%}
+			<div class='container' style='min-height:100px; padding:20px; border-bottom: 1px solid #ccc;'>
+				<div class='columns is-4 is-mobile'>
+					<div class='column is-3'>
+						<figure class="image is-64x64">
+							<img class="is-rounded" src="{{editor.profile.url}}" alt="Image" style="max-width: 64px;min-width: 64px;min-height: 64px;max-height: 64px">
+						</figure>
+					</div>
+					<div class='column'>
+						<div  class='has-margin-left-20'>
+							<p>
+								<strong>{{editor.editor_name}}</strong>
+								<br>
+								<span class='is-size-7'>{{editor.designation}}</span><br>
+								<span class='is-size-7'>{{editor.editor_info}}</span>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+			{% else %}
+			<p class="has-text-danger">No editors Added Yet..</p>
+			{% endif %}
+		</div>
+	</div>
+</div>
+
+
+<!-- Open Access Journal-->
+<div class='container has-margin-top-20' style='border:3px solid #ccc'>
+	<div class='has-padding-10' style='width:100%; background-color: #006266;'>
+		<p class="has-text-centered is-size-4 has-text-light">Open Access Journals</p>
+	</div>
+	<div class='is-block has-background-white' style='min-height:200px; width:100%'>
+		<div class='field has-padding-20 has-text-centered'>
+			<div class='control has-text-centered'>
+				<div class="select is-fullwidth">
+					<select>
+						{% if journals %}
+						{% for journal in journals %}
+						<option>{{journal.journal_name}}</option>
+						{% endfor %}
+						{% else %}
+						<option><p class='has-text-danger'>No Journals</p></option>
+						{% endif %}
+					</select>
+				</div>
+			</div>
+			<a href='{% url "submitManuscript" %}' class='has-text-centered' style='margin-top:40px'>
+				<button class='button is-link has-text-centered ' style='margin-top:40px'>Submit Manuscript</button>
+			</a>
+		</div>
+	</div>
+</div>
+
+<!--subject area-->
+<div class="container has-margin-top-20">
+	<div class="is-block has-padding-10" style="border-radius:5px;box-shadow: 2px 2px 10px #333; background-color: #006266;">
+		<p class="has-text-centered is-size-4" style="color:#ced6e0">Subject Area</p>
+		{% if journals %}
+		{% for journal in journals %}
+		<p class="is-size-6 has-text-centered"><a href="{% url 'journal_details' url=journal.journal_url %}" class="has-text-white">{{journal.subject}}</a></p>
+		{% endfor %}
+		{% else %}
+		<p class="has-text-danger">No journals yet, stay tuned -or- contact support</p>
+		{% endif %}
+	</div>
+</div>

@@ -2,146 +2,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>GAJRC | {{ journal.journal_name }}</title>
+	<title>SAR Publication - {{ journal.journal_name }}</title>
 
 	<meta name="viewport" content= "width=device-width, initial-scale=1.0"> 
 
 	<link rel="stylesheet" href="{% static 'css/custom.css' %}">
 	<link rel="stylesheet" href="{% static 'css/main.css' %}">
 	<link rel="stylesheet" href="{% static 'css/bulmahelper.min.css' %}">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/bulma-carousel.min.css' %}"/>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="{% static 'js/main.js' %}"></script>
 	<script src="{% static 'js/dropzone.js' %}"></script>
 	<script src="{% static 'js/bulma-carousel.min.js' %}"></script>
+	<script src="https://kit.fontawesome.com/3d4a04bbba.js" crossorigin="anonymous"></script>
 	<style>
-	.banner{
-		background-image:url( {{journal.journal_cover.url}} );
-		background-size:cover;
-		background-position:fixed;
-		border-radius:7px;
-		height: 30em;
-		box-shadow: 2px 2px 10px #333;
-	}
-	.banner-name{
-		background-color: rgba(0,0,0,0.5);
-	}
-	.member-items{
-		background-color: white;
-		width:200px;
-		height:100px;
-		padding: 20px;
-	}
-</style>
+		.banner{
+			background-image:url( {{journal.journal_cover.url}} );
+			background-size:cover;
+			background-position:fixed;
+			border-radius:7px;
+			height: 30em;
+			box-shadow: 2px 2px 10px #333;
+		}
+		.banner-name{
+			background-color: rgba(0,0,0,0.5);
+		}
+	</style>
 </head>
 
 <body>
-	<div class="index-background-container" >
+	<div class="has-padding-bottom-100" >
 		<!--Header-->
-		<div class="header">
-			<section class="is-fullhd">
-				<nav class="navbar has-padding-left-20 has-padding-right-20" role="navigation" aria-label="main navigation">
-					<div class="navbar-brand">
-						<a class="navbar-item" href="{% url 'index' %}">
-							<figure class="image" style="height:75;width:100px">
-								<img src="{% static 'media/mainLogo.png' %}">
-							</figure>
-						</a>
-
-						<a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-							<span aria-hidden="true"></span>
-							<span aria-hidden="true"></span>
-							<span aria-hidden="true"></span>
-						</a>
-					</div>
-
-					<div id="navbarBasicExample" class="navbar-menu">
-						<div class="navbar-start">
-
-						</div>
-
-						<div class="navbar-end">
-							<a class="navbar-item" href="{% url 'index' %}">
-								<i class="fa fa-home fa-lg"></i>
-							</a>
-
-							<a class="navbar-item" href="{% url 'about_us' %}">
-								About Us
-							</a>
-							<a class="navbar-item" href="{% url 'contact_us' %}">
-								Contact Us
-							</a>
-							<a class="navbar-item" href="{% url 'journals' %}">
-								Journals
-							</a>
-							<div class="navbar-item has-dropdown is-hoverable">
-								<a class="navbar-link">
-									For Authors
-								</a>
-
-								<div class="navbar-dropdown">
-									<a class="navbar-item" href="{% url 'author_guidelines' %}">
-										Guidelines
-									</a>
-									<a class="navbar-item" href="{% url 'processing_fees' %}">
-										Processing Fee
-									</a>
-								</div>
-							</div>
-							<div class="navbar-item">
-								<div class="buttons">
-									<a class="button is-primary" href="{% url 'submitManuscript' %}">
-										<strong>Submit Manuscript</strong>
-									</a>
-								</div>
-							</div>	
-						</div>
-					</div>
-				</nav>
-			</section>
+		{% include 'index/header.html' %}
+		<div style='background-color: #353b48;'>
+			<div class='container'>
+				<p class='has-text-light is-size-2' style='border-bottom:5px solid #e67e22'>{{ journal.journal_name }}</p>
+			</div>
 		</div>
 
 		<!--Journal Banner-->
-		<section class="hero has-margin-top-10">
-			<div class="hero-body">
-				<div class="banner has-padding-top-120 has-padding-bottom-120 has-text-centered">
-					<div class="title is-size-1 is-size-3-mobile  has-text-primary has-text-centered">
-						<div class="container">
-							<p class="banner-name has-text-white has-padding-20">{{ journal.journal_name }}</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
+		<div class="banner">
+		</div>
 
 		<!--Main Content-->
-		<section class="has-padding-20">
+		<div class='container has-margin-top-50'>
 			<div class="columns">
+				<!--Left Column-->
 				<div class="column is-9">
 					<!--Tabs-->
-					<div class="has-margin-top-20 is-block has-background-white"   style="box-shadow: 2px 2px 10px #333;border-radius: 5px">
-						<div class="tabs is-boxed is-size-5 is-size-6-mobile">
+					<div class="is-block has-background-white">
+						<div class="tabs is-toggle is-fullwidth is-size-5 is-size-6-mobile">
 							<ul>
-								<li class="tab is-active" onclick="openTab(event,'1')"><a>Journal Description</a></li>
-								<li class="tab" onclick="openTab(event,'2')"><a >Details</a></li>
+								<li class="tab is-active" onclick="openTab(event,'1')"><a>Details</a></li>
+								<li class="tab" onclick="openTab(event,'2')"><a >Journal Description</a></li>
 								<li class="tab" onclick="openTab(event,'3')"><a >Editorial Board</a></li>
 								<li class="tab" onclick="openTab(event,'4')"><a >Archives</a></li>
+								<li class="tab" onclick="openTab(event,'5')"><a >Indexing &amp; Impact Factor</a></li>
 							</ul>
 						</div>
 
 						<div class="container is-fluid has-padding-20">
 
-							<!--Description tab-->
-							<div id="1" class="content-tab" >
-								<p>
-									{{ journal.journal_info}}
-								</p>
-							</div>
 
 							<!--Details tab-->
-							<div id="2" class="content-tab" style="display:none">
+							<div id="1" class="content-tab is-active">
 								<p>
 									<table>
 										<tr >
@@ -184,8 +109,18 @@
 								</p>
 							</div>
 
+							<!--Description tab-->
+							<div id="2" class="content-tab"  style="display:none"	>
+								<p>
+									<span class='is-size-3'>About Journal</span><br>
+									{{ journal.journal_info}}<br><br>
+									<span class='is-size-3'>Scope of Journal</span><br>
+									{{ journal.journal_scope}}<br><br>
+								</p>
+							</div>
+
 							<!--Editorial Board tab-->
-							<div id="3" class="content-tab" style="display:none;overflow:auto;"">
+							<div id="3" class="content-tab" style="display:none;overflow:auto;">
 								<p>	
 									{% if editors %}
 									<table>
@@ -215,7 +150,7 @@
 									<li><p class="is-size-5 is-size-6-mobile">{{ volume_year.grouper }}</p>
 										<ul>
 											{% for volume in volume_year.list %}
-											<a href="{% url 'volume_articles' id=journal.id vol=volume issue=volume.issue_name%}" target="_blank">
+											<a href="{% url 'volume_articles' url=journal.journal_url vol=volume issue=volume.issue_name%}" target="_blank">
 												<button class="button is-danger is-outlined">{{volume}} {{volume.issue_name}}</button>
 											</a>
 											{% endfor %}
@@ -228,11 +163,20 @@
 								{% endif %}
 							</div>
 
+							<!--Indexing and Impact Factor-->
+							<div id="5" class="content-tab" style="display:none">
+								<div class='has-padding-30'>
+									<p class='has-text-danger is-size-4 is-size-5-mobile'>
+										Under Evaluation
+									</p>
+								</div>
+							</div>
+
 						</div>
 					</div>
 
 					<!--Recent articles-->
-					<div class="has-padding-20 has-margin-top-20 is-block has-background-white"   style="box-shadow: 2px 2px 10px #333;border-radius: 5px">
+					<div class="has-padding-20 has-margin-top-20 is-block has-background-white" >
 						<p class="is-size-3 is-size-4-mobile has-text-grey">Latest Articles</p>
 						<!--articles-->
 						{% if articles%}
@@ -253,7 +197,12 @@
 										<p>
 											<i class="fa fa-user"></i>{{ article.author }}
 										</p>
-										<button class="button is-outlined is-primary is-pulled-right"><a href="{{article.article.url}}" class="is-primary">Download</a></button>
+										DOI : <span class='has-text-danger'>{{article.doi}}</span>
+										<br>
+										<div class='is-inline-block has-margin-top-20' >
+											<a href='{{article.article.url}}'><button class='article-button'><i class='fa fa-file-pdf'></i> &nbsp; PDF</button></a>
+											<a href='{{article.article.url}}' download><button class='article-button'><i class='fa fa-download'></i> &nbsp; Download</button></a>
+										</div>
 									</div>
 
 								</div>
@@ -266,200 +215,15 @@
 					</div>
 				</div>
 
-				<!--Right Bar-->
-				<div class="column has-margin-top-10">
-					<!-- Top Editor -->
-					<div class="container has-padding-10 has-margin-top-20">
-						<div class="card has-padding-10" style="box-shadow: 2px 2px 10px #333;border-radius: 5px">
-							<div class="card-header">
-								<p class="is-size-5"> Top Editors</p>
-							</div>
-							<div class="slider" style="overflow:hidden !important;">
-								{% if top_editors%}
-								{% for editor in top_editors%}
-								<div class="box">
-									<article class="media">
-										<div class="media-left">
-											<figure class="image is-64x64">
-												<img class="is-rounded" src="{{editor.profile.url}}" alt="Image" style="max-width:64px">
-											</figure>
-										</div>
-										<div class="media-content">
-											<div class="content">
-												<p>
-													<strong>{{editor.editor_name}}</strong>
-													<br>
-													{{editor.designation}}<br>
-													{{editor.editor_info}}
-												</p>
-											</div>
-										</div>
-									</article>
-								</div>
-								{% endfor %}
-								{% else %}
-								<p class="has-text-danger">No editors Added Yet..</p>
-								{% endif %}
-							</div>
-						</div>
-					</div>
-
-					<!--Awards -->
-					<div class="container has-padding-10 has-margin-top-20 is-block has-background-white"   style="box-shadow: 2px 2px 10px #333;border-radius: 10px">
-						<figure class="image" >
-							<a href="#"><img src="{% static 'media/awards.jpg' %}"></a>
-						</figure>
-					</div>
-
-					<!-- Pay button -->
-					<div class="container has-margin-top-20">
-						<button class="button is-large is-fullwidth is-primary"  style="box-shadow: 2px 2px 4px #333;border-radius: 5px">Pay Now</button>
-					</div>
-
-					<!--subject area-->
-					<div class="container has-margin-top-20">
-						<div class="is-block has-background-dark has-padding-10" style="border-radius:5px;box-shadow: 2px 2px 10px #333;">
-							<p class="has-text-centered is-size-4" style="color:#ff811f">Subject Area</p>
-							{% if journals %}
-							{% for journal in journals %}
-							<p class="is-size-6"><a href="{% url 'journal_details' id=journal.id %}" class="has-text-white">{{journal.subject}}</a></p>
-							{% endfor %}
-							{% else %}
-							<p class="has-text-danger">No journals yet, stay tuned -or- contact support</p>
-							{% endif %}
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<!--members in-->
-		<section class="section is-block has-background-dark has-margin-top-50 has-text-white" style="box-shadow: 2px 2px 10px #333;">
-			<p class="is-size-4 has-text-light"><span style="color:#0f5a00;font-weight: 900"> | </span> Members in</p><br><br>
-			<div class="carousel">
-				<div class="member-items item-1">
-					<img src="{% static 'media/member1.png' %}">
-				</div>
-				<div class="member-items item-2">
-					<img src="{% static 'media/member2.svg' %}">
-				</div>
-				<div class="member-items item-3">
-					<img src="{% static 'media/member3.png' %}">
-				</div>
-				<div class="member-items item-4">
-					<img src="{% static 'media/member4.png' %}">
-				</div>
-				<div class="member-items item-5">
-					<img src="{% static 'media/member5.png' %}">
-				</div>
-				<div class="member-items item-6">
-					<img src="{% static 'media/member6.png' %}">
-				</div>
-				<div class="member-items item-7">
-					<img src="{% static 'media/member7.png' %}">
-				</div>
-				<div class="member-items item-8">
-					<img src="{% static 'media/member8.png' %}">
-				</div>
-				<div class="member-items item-9">
-					<img src="{% static 'media/member9.png' %}">
-				</div>
-				<div class="member-items item-10">
-					<img src="{% static 'media/member10.png' %}">
-				</div>
-
-			</div>
-		</section>
-
-		<!--FOOTER-->
-		<section class="section is-size-6-mobile has-background-dark has-text-light has-margin-top-100">
-
-			<div class="has-text-centered"><p class="is-size-5">Article formats</p></div>
-			<div class="columns is-variable has-margin-top-10">
-				<div class="column is-6">
-					<div class="box has-background-dark">
-						<article class="media">
-							<div class="media-left">
-								<i class="fa fa-file-pdf-o fa-5x"></i>
-							</div>
-							<div class="media-content">
-								<div class="content">
-									<p>
-										PDF (Portable Document Format) is a file format that has captured all the elements of a printed document as an electronic image that you can view, navigate <a href="https://www.google.com/search?q=pdf" class="has-text-white" target="_blank">read more...</a>
-									</p>
-								</div>
-							</div>
-						</article>
-					</div>
-				</div>
-				<div class="column is-6">
-					<div class="box has-background-dark">
-						<article class="media">
-							<div class="media-left">
-								<i class="fa fa-file-text fa-5x"></i>
-							</div>
-							<div class="media-content">
-								<div class="content">
-									<p>
-										A full-text database is a compilation of documents or other information in the form of a database in which the complete text of each referenced document is <a href="https://www.google.com/search?q=text+file" class="has-text-white" target="_blank">read more...</a>
-									</p>
-								</div>
-							</div>
-						</article>
-					</div>
-				</div>
-			</div>
-			<div class="is-divider"></div>
-			<div class="columns is-variable has-margin-top-20">
+				<!--Right Column-->
 				<div class="column">
-					<p class="is-size-5">Contact us</p><br>
-					<p class="is-size-7 has-text-grey">
-						Scholars Middle East Publishers,<br>
-						Gold Souk, Deira, d – 24 D85,<br>
-						Dubai, United Arab Emirates<br><br>
-
-						+971-54-717-2569<br>
-						gajrcofficial@gmail.com<br>
-					</p>
-				</div>
-				<div class="column">
-					<p class="is-size-5">Useful Links</p><br>
-					<p class="is-size-7 has-text-grey">
-						Home<br>
-						Aim and Scope<br>
-						Author Guidelines<br>
-						Subject Area<br>
-					</p>
-				</div>
-				<div class="column">
-					<p class="is-size-5">About Us</p><br>
-					<p class="is-size-7 has-text-grey">
-						GAJRC (Global Acedemic Journals and Research Consortium) is an international scholar’s community
-						which publish research paper under Scholars Middle East Publisher for open access scientific
-						journals in both print and online publishing from Dubai, UAE.<a href="#" class="has-text-white"> Read More Here</a>
-					</p>
-				</div>
-				<div class="column">
-					<a id="comment-button"><p class="is-size-5 has-text-white">Leave a Feedback <i class="fa fa-chevron-down fa-xs"> </i></p></a>
-					<div id="comment-container" style="display: none">
-						<div class="field">
-							<div class="control ">
-								<input class="input is-small has-margin-5" type="text" placeholder="Enter Name">
-								<input class="input is-small has-margin-5" type="email" placeholder="Enter Email">
-								<textarea class="textarea is-small has-margin-5" type="textarea" placeholder="Comment Here.."></textarea>					
-								<button id="leave-comment" class="button is-outlined is-primary has-margin-5" >Submit</button>
-							</div>
-						</div>
-					</div>
-					<div class="thankyou-container"></div>
+					{% include 'index/right-bar.html' %}
 				</div>
 			</div>
-			<div class="container has-text-centered">
-				<p> &copy; CompanyName 2019, All Rights Reserved</p>
-				<p class="has-text-grey is-size-6"><a href="https://github.com/jayantamadhav" class="has-text-light" target="_blank">Developed by JM</a></p>
-			</div>
-		</section>
+		</div>
 	</div>
+
+	{% include 'index/footer.html' %}
 	<script type="text/javascript">
 		function openTab(evt, tabName) {
 			var i, x, tablinks;
@@ -477,7 +241,7 @@
 		$(document).ready(function(){
 			var carousels = bulmaCarousel.attach('.carousel', {
 				slidesToScroll: 1,
-				slidesToShow: 6,
+				slidesToShow: 4,
 				autoplay: true,
 				autoplaySpeed: 3000,
 				pagination: false,

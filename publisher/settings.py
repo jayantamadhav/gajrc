@@ -22,10 +22,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'q&7c&5o)ogpz@airk$(a_c9x%3x5d)+iigd@r6@cmc0-3e*+(f'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['www.gajrc.com', 'gajrc.com', '156.67.214.16']
-#ALLOWED_HOSTS = ['127.0.0.1']
+#ALLOWED_HOSTS = ['www.gajrc.com', 'gajrc.com', '156.67.214.16']
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -87,6 +87,7 @@ DATABASES = {
 
 #--------DATABASES--------#
 #POSTGRESQL DB
+'''
 DATABASES = {
 'default': {
     'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -96,15 +97,15 @@ DATABASES = {
     'HOST': 'localhost',
     'PORT': '5432',
 }
-}
+}'''
 #SQLite DB
-'''
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
-}'''
+}
 
 
 # Password validation
@@ -125,6 +126,14 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
+#EMAIL SMTP SERVER
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'jayantamadhav67@gmail.com'
+EMAIL_HOST_PASSWORD = '789Jayant@'
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/

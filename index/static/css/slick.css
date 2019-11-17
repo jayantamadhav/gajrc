@@ -1,7 +1,6 @@
 /* Slider */
 .slick-slider
-{   
-    overflow:hidden;
+{
     position: relative;
 
     display: block;
@@ -79,6 +78,8 @@
 {
     display: none;
     float: left;
+
+    height: 100%;
     min-height: 1px;
 }
 [dir='rtl'] .slick-slide

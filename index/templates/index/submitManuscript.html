@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>GAJRC | Submit Manuscript</title>
+	<title>SAR Publication - Manuscript Submission</title>
 
 	<meta name="viewport" content= "width=device-width, initial-scale=1.0"> 
 
@@ -15,222 +15,129 @@
 	<script src="{% static 'js/dropzone.js' %}"></script>
 </head>
 <body>
-	<div class="index-background-container" >
-		<div class="header">
-			<section class="is-fullhd">
-				<nav class="navbar has-padding-left-20 has-padding-right-20" role="navigation" aria-label="main navigation">
-					<div class="navbar-brand">
-						<a class="navbar-item" href="{% url 'index' %}">
-							<figure class="image" style="height:75;width:100px">
-								<img src="{% static 'media/mainLogo.png' %}">
-							</figure>
-						</a>
-
-						<a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-							<span aria-hidden="true"></span>
-							<span aria-hidden="true"></span>
-							<span aria-hidden="true"></span>
-						</a>
-					</div>
-
-					<div id="navbarBasicExample" class="navbar-menu">
-						<div class="navbar-start">
-
-						</div>
-
-						<div class="navbar-end">
-							<a class="navbar-item" href="{% url 'index' %}">
-								<i class="fa fa-home fa-lg"></i>
-							</a>
-
-							<a class="navbar-item" href="{% url 'about_us' %}">
-								About Us
-							</a>
-							<a class="navbar-item" href="{% url 'contact_us' %}">
-								Contact Us
-							</a>
-							<a class="navbar-item" href="{% url 'journals' %}">
-								Journals
-							</a>
-
-							<!--<div class="navbar-item has-dropdown is-hoverable">
-								<a class="navbar-link">
-									Guidelines
-								</a>
-
-								<div class="navbar-dropdown">
-									<a class="navbar-item">
-										Editor Guidelines
-									</a>
-									<a class="navbar-item">
-										Reviewer Guidelines
-									</a>
-									<a class="navbar-item">
-										Manuscript Guidelines
-									</a>
-								</div>
-							</div>-->
-
-							<div class="navbar-item has-dropdown is-hoverable">
-								<a class="navbar-link">
-									For Authors
-								</a>
-
-								<div class="navbar-dropdown">
-									<a class="navbar-item" href="{% url 'author_guidelines' %}">
-										Guidelines
-									</a>
-									<a class="navbar-item" href="{% url 'processing_fees' %}">
-										Processing Fee
-									</a>
-								</div>
-							</div>
-						<div class="navbar-item">
-							<div class="buttons">
-								<a class="button is-primary" href="{% url 'submitManuscript' %}">
-									<strong>Submit Manuscript</strong>
-								</a>
-							</div>
-						</div>	
-					</div>
-				</nav>
-			</section>
-			<section class="hero has-padding-20 has-margin-top-10">
-				<div class="hero-body">
-					<div class="container has-text-centered">
-						<h1 class="title is-size-1 is-size-2-mobile  has-text-primary">
-							Online Submission System
-						</h1>
-					</div>
-				</div>
-			</section>
+	<div class="has-padding-bottom-100" >
+		{% include 'index/header.html' %}
+		<div style='background-color: #353b48;padding-top: 50px'>
+			<div class='container'>
+				<p class='has-text-light is-size-2' style='border-bottom:5px solid #e67e22'>Manuscript Submission</p>
+			</div>
 		</div>
-		<section class="container has-padding-40 is-block has-background-white" style="box-shadow: 2px 2px 10px #333;border-radius: 5px">
-			<p class="has-text-danger">Authors may also submit their manuscript by email to <strong>easpublisher@gmail.com</strong></p><br>
-			<p  class="is-size-4 is-size-5-mobile"> Personal Details</p><br>
-			<div class="columns is-variable">
-				<div class="column">
-					<div class="field is-fullwidth">
-						<div class="control is-fullwidth">
+		<div class='container has-margin-top-50'>
+			<div class='columns'>
+				<div class='column is-9'>
+					<section class="container	">
+						<form id='manuscript-form' enctype="multipart/form-data" method='post'>
+							{% csrf_token %}
+							<p class="has-text-danger is-size-4">Authors may also submit their manuscript by email to <strong>sarpublication@gmail.com</strong></p><br>
+							<p  class="is-size-4 is-size-5-mobile"> Personal Details</p><br>
 							<div class="columns is-variable">
-								<div class="column is-2">
-									<div class="select is-fullwidth">
-										<select>
-											<option selected>Select title</option>
-											<option> Dr. </option>
-											<option> Prof </option>
-											<option> Mr. </option>
-											<option> Ms. </option>
-											<option> Mrs. </option>
-											<option> Miss </option>
-										</select>
-									</div>
-								</div>
 								<div class="column">
+									<div class="field is-fullwidth">
+										<div class="control is-fullwidth">
+											<div class="columns is-variable">
+												<div class="column is-2">
+													<div class="select is-fullwidth">
+														<select required=true name='title'>
+															<option selected disabled>Select title</option>
+															<option> Dr. </option>
+															<option> Prof </option>
+															<option> Mr. </option>
+															<option> Ms. </option>
+															<option> Mrs. </option>
+															<option> Miss </option>
+														</select>
+													</div>
+												</div>
+												<div class="column">
+													<div class="control">
+														<input name='first' class="input" type="text" placeholder="First Name" required=true>
+													</div>
+												</div>
+												<div class="column">
+													<div class="control">
+														<input name='last' class="input" type="text" placeholder="Last Name" required=true>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
 									<div class="control">
-										<input class="input" type="text" placeholder="First Name">
+										<input name='university' class="input" type="text" placeholder="University" required=true>
+									</div><br>
+									<div class="control">
+										<textarea name='address' class="textarea" type="textarea" placeholder="Address" required=true></textarea>
+									</div><br>
+									<div class="columns is-variable">
+										<div class="column">
+											<div class="control">
+												<input name='email' class="input" type="email" placeholder="Email" required=true>
+											</div>
+										</div>
+										<div class="column">
+											<div class="control">
+												<input name='phone' class="input" type="text" placeholder="Phone Number" required=true>
+											</div>
+										</div>
 									</div>
 								</div>
+							</div><br>
+
+							<p class="is-size-4 is-size-5-mobile"> Document Details</p><br>
+							<div class="columns is-variable">
 								<div class="column">
-									<div class="control">
-										<input class="input" type="text" placeholder="Last Name">
+									<div class="field is-fullwidth">
+										<div class="control is-fullwidth">
+											<div class="select is-fullwidth">
+												<select name='journal' required=true>
+													<option selected disabled>Select Journal</option>
+													{% if journals %}
+													{% for journal in journals %}
+													<option>{{ journal.journal_name}}</option>
+													{% endfor %}
+													{% else %}
+													<option disabled>No Journals Added</option>
+													{% endif %}
+												</select>
+											</div>
+										</div><br>
+										<div class="control">
+											<div class="select is-fullwidth">
+												<select name='article-type' required=true>
+													<option selected disabled>Select article type</option>
+													<option> Research Article </option>
+													<option> Review Article </option>
+													<option> Case Report </option>
+													<option> Letter to Editor </option>
+													<option> Short Article </option>
+													<option> Others </option>
+												</select>
+											</div>
+										</div><br>
+										<div class="control is-fullwidth">
+											<input name='manuscript-title' class="input" type="text" placeholder="Manuscript Title" required=true>
+										</div><br>
+										<div class="control">
+											<textarea name='abstract' class="textarea" type="textarea" placeholder="Insert Abstract" required=true></textarea>
+										</div><br>
+										<div >
+											<button name='file' class='button is-link'><input type='file' name='file' required=true>| Choose a File to upload
+											</button>
+										</div>
+										<div class="controll is-pulled-right">
+											<button id="submit-manuscript" class="button is-outlined is-primary" type='submit'>Submit Manuscript</button>
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-					</div>
-					<div class="control">
-						<input class="input" type="text" placeholder="University">
-					</div><br>
-					<div class="control">
-						<textarea class="textarea" type="textarea" placeholder="Address"></textarea>
-					</div><br>
-					<div class="columns is-variable">
-						<div class="column">
-							<div class="control">
-								<input class="input" type="email" placeholder="Email">
-							</div>
-						</div>
-						<div class="column">
-							<div class="control">
-								<input class="input" type="text" placeholder="Phone Number">
-							</div>
-						</div>
-					</div>
+						</form>
+					</section>
 				</div>
-			</div><br>
-
-			<p class="is-size-4 is-size-5-mobile"> Document Details</p><br>
-			<div class="columns is-variable">
-				<div class="column">
-					<div class="field is-fullwidth">
-						<div class="control is-fullwidth">
-							<input class="input" type="text" placeholder="Journal Name">
-						</div><br>
-						<div class="control">
-							<div class="select is-fullwidth">
-								<select>
-									<option selected>Select article type</option>
-									<option> Dr. </option>
-									<option> Prof </option>
-									<option> Mr. </option>
-									<option> Ms. </option>
-									<option> Mrs. </option>
-									<option> Miss </option>
-								</select>
-							</div>
-						</div><br>
-						<div class="control is-fullwidth">
-							<input class="input" type="text" placeholder="Manuscript Title">
-						</div><br>
-						<div class="control">
-							<textarea class="textarea" type="textarea" placeholder="Insert Abstract"></textarea>
-						</div><br>
-						<div id="dropZone" class="has-padding-30 has-text-centered" style="background:#e7e7e7;">
-							<form action="/file-upload" class="dropzone has-padding-50" style= "background:white; border:2px dashed blue">
-								<div class="fallback">
-									<input name="file" type="file" multiple />
-								</div>
-							</form>
-
-						</div><br>
-						<div class="controll is-pulled-right">
-							<button id="submit-manuscript" class="button is-outlined is-primary">Submit Manuscript</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-		<section class="section">
-		</section>
-	</div>
-	<div class="modal">
-		<div class="modal-background"></div>
-		<div class="modal-content">
-			<div class="container is-block has-background-white has-padding-20 has-margin-5" style="border-radius: 5px">
-				<p class="is-size-4"><Strong>Provide new details</Strong></p><br>
-				<div class="control" id="modal-control">
-					<div class="notification is-warning">Oops, something went wrong. We are currently fixing it..Regret any inconveniences</div>
-					<p> Here's what you can do : </p>
-					<p> 1. Contact Us to submit your article </p>
-					<p> 2. Send
-					 the article directly to this email address - <strong>easpublisher@gmail.com</strong></p>
-				</div>
-				<div class="has-text-right has-margin-top-30">
-					<button class="button is-outlined is-danger" id="close">Back</button>
+				<div class='column'>
+					{% include 'index/right-bar.html' %}
 				</div>
 			</div>
 		</div>
 	</div>
-	<script>
-		$(document).ready(function(){
-			$('#submit-manuscript').click(function(){
-				$('.modal').addClass('is-active');
-			});
-			$('#close').click(function(){
-				$('.modal').removeClass('is-active');
-			});
-		});
-	</script>
+	{% include 'index/footer.html' %}
 </body>
 </html>
